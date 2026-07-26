@@ -1,6 +1,6 @@
-# Evidence Basis
+# Evidence Basis for the Specification Workflow
 
-This skill synthesises open, high-trust engineering guidance. Use these sources when the spec needs citations or deeper domain checks.
+Specify synthesises open, high-trust engineering guidance. This maintainer note records the domain sources behind the workflow; the runtime skill remains self-contained.
 
 ## Requirements rigor
 
