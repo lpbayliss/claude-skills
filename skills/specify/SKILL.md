@@ -5,7 +5,7 @@ license: MIT
 compatibility: Designed for Claude Code and compatible Agent Skills clients; repository work requires file/search tools, and visual artifacts require image inspection or supplied extraction.
 metadata:
   author: lpbayliss
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 # Software Specification Workflow

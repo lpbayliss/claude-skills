@@ -46,6 +46,7 @@ The research leads to these concrete changes:
 10. Distinguish pre-implementation evidence, planned verification, and observed post-implementation results.
 11. Separate bounded readiness-resolution work from authorized implementation slices.
 12. Balance blocker-detection evals with Ready, Conditionally ready, greenfield-bootstrap, update, spike, and roll-forward-only cases.
+13. Scope partial supersession to the exact named claim so later weaker statements cannot silently relax adjacent timing, sequencing, threshold, or safety constraints.
 
 ## Primary sources
 

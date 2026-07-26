@@ -8,7 +8,8 @@ Use this process for existing specifications, PRDs, RFCs, ADRs, tickets, plans, 
 2. Record each source by path, URL, title, date, revision, or other stable identifier.
 3. Separate explicit source statements from your interpretation.
 4. Correct factual claims when stronger evidence disproves them. Supersede an accepted requirement, constraint, policy, or decision only through its governing source or acceptance authority; current implementation behavior alone has no such authority.
-5. Surface contradictions rather than choosing an answer without authority.
+5. Scope a supersession to the exact accepted claim being replaced. Preserve adjacent sequencing, timing, thresholds, and safety constraints unless the authority explicitly changes them. A later source stating a weaker minimum does not silently relax an earlier stronger constraint. Keep the timing of an activity separate from the timing of its passing result or approval: “perform before A” plus “pass before B” does not mean “pass before A.”
+6. Surface contradictions rather than choosing an answer without authority.
 
 ## Build a conversion map
 

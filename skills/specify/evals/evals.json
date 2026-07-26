@@ -163,8 +163,8 @@
     {
       "id": 10,
       "kind": "update-roll-forward",
-      "prompt": "Update the supplied accepted key-rotation specification using the accepted implementation discovery. Preserve the original authority, explicitly supersede only the invalid failure-handling claim, and produce a concise change summary. Also assess implementation readiness specifically for old-key revocation; no passing restore-rehearsal or reconciliation result has been supplied. Do not invent a reversible rollback after key revocation.",
-      "expected_output": "An updated accepted specification with a separate Not ready verdict for revocation until its evidence gates pass; it distinguishes pre-revocation pause/re-enable from post-revocation roll-forward recovery, names the point of no return, and records the superseded claim with provenance.",
+      "prompt": "Update the supplied accepted key-rotation specification using the accepted implementation discovery. Preserve the original authority and every accepted constraint except the exact invalid always-reactivate failure-handling claim; explicitly supersede only that claim and produce a concise change summary. Also assess implementation readiness specifically for old-key revocation; no passing restore-rehearsal or reconciliation result has been supplied. Do not invent a reversible rollback after key revocation.",
+      "expected_output": "An updated accepted specification with a separate Not ready verdict for revocation until its evidence gates pass; it preserves the stricter requirement to rehearse restore and record-count reconciliation before rotation begins, also treats their passing results as revocation gates, distinguishes pre-revocation pause/re-enable from post-revocation roll-forward recovery, names the point of no return, and records the superseded claim with provenance.",
       "files": [
         "evals/files/key-rotation/accepted-spec.md",
         "evals/files/key-rotation/implementation-note.md"
@@ -175,7 +175,7 @@
         "Pre-revocation pause or re-enable is distinguished from post-revocation roll-forward recovery",
         "Revocation is the point of no return and restore rehearsal plus reconciliation gate it",
         "No fictional key undelete or rollback after revocation is invented",
-        "The change summary attributes preserved, corrected, superseded, and unresolved content to the supplied sources"
+        "The exact accepted timing remains intact: restore and record-count reconciliation are rehearsed before rotation begins, their passing results gate revocation, the output does not require passing before rotation begins, and the change summary does not mislabel the constraint as changed, weakened, or strengthened"
       ]
     },
     {
