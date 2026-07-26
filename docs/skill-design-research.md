@@ -40,8 +40,12 @@ The research leads to these concrete changes:
 4. Make source precedence, confidence, and artifact transformation more explicit while keeping the original immutable by default.
 5. Add a draft → checklist review → fix → verdict feedback loop.
 6. Keep safety-critical requirements strict but make optional coverage conditional on material relevance.
-7. Move source/research provenance out of the runtime skill folder.
+7. Move source/research provenance out of the default runtime path while retaining an optional public audit pointer.
 8. Expand evals with objective assertions and compare the revision against the v1.0.0 snapshot in fresh contexts.
+9. Track artifact lifecycle separately from implementation readiness and scope every readiness verdict.
+10. Distinguish pre-implementation evidence, planned verification, and observed post-implementation results.
+11. Separate bounded readiness-resolution work from authorized implementation slices.
+12. Balance blocker-detection evals with Ready, Conditionally ready, greenfield-bootstrap, update, spike, and roll-forward-only cases.
 
 ## Primary sources
 

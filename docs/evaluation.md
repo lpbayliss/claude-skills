@@ -34,11 +34,28 @@ Two v1.0.0 outputs won narrow case-level preferences. The mini-spec baseline off
 
 Both descriptions covered all intended specification tasks. The v1.0.0 description over-triggered on accepted-spec implementation, RFC summarization, mechanical diagram rendering, ADR explanation, sprint administration, and migration execution. The v1.1 boundary preserved recall while excluding straightforward coding, debugging, explanation, and execution-only work.
 
+## Post-comparison readiness-boundary validation
+
+An independent domain review of the initial candidate found three release-blocking semantic gaps: artifact lifecycle and implementation readiness were conflated, not-ready discovery work could be mislabeled as implementation slices, and the eval suite had no positive readiness cases. The workflow, template, checklist, example, and eval suite were repaired together. A fresh independent re-review returned **Ready** with no semantic regression.
+
+Five positive and boundary cases were then run in fresh contexts against the repaired skill:
+
+| Evaluation | Assertions | Words | Boundary exercised |
+|---|---:|---:|---|
+| Accepted repository issue contract | 6/6 | 298 | `Ready` for an exact low-risk code/test scope |
+| Conditional implementation scope | 6/6 | 339 | Coding may start; a post-implementation smoke result still gates release |
+| Accepted greenfield bootstrap | 6/6 | 460 | User-authorized future paths are not reported as observed files |
+| Accepted roll-forward update | 6/6 | 731 | Artifact remains Accepted while revocation is separately `Not ready` pending evidence |
+| Bounded architecture spike | 6/6 | 740 | `Ready` for evidence gathering and `Not ready` for product implementation |
+| **Overall** | **30/30** | **2,568** | Five distinct readiness boundaries |
+
+Independent graders passed all 30 assertions. Across the four scored compact/boundary outputs, readiness semantics and non-fabrication averaged 5.0/5; proportionality averaged 4.5/5. The roll-forward update received a separate six-assertion pass.
+
 ## Limitations
 
-- This was an initial three-case comparison, not a variance study across repeated runs and models.
+- The blind A/B comparison covered three cases, and the repaired-skill follow-up covered five single runs; neither is a variance study across repeated runs and models.
 - Assertions combine mechanical checks, such as word counts, with independent semantic grading.
 - The trigger test used an independent blind evaluator rather than the Claude host classifier because the local Claude CLI OAuth session had expired.
 - Human preference still matters for how much implementation scaffolding a team wants in a not-ready mini-spec.
 
-The repository retains eleven output-quality cases, 66 assertions, 20 trigger cases, and deterministic schema/path checks so later iterations can broaden the executed sample and measure variance.
+The repository retains eleven output-quality cases, 66 assertions, 20 trigger cases, and deterministic schema, path, and eval-category checks so later iterations can broaden the executed sample and measure variance.

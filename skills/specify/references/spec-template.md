@@ -7,7 +7,7 @@ Use this only for work that warrants a full specification. Delete sections that 
 - Metadata and decision summary
 - Context, goals, and requirements
 - System behavior, interfaces, data, and design
-- Security, operations, verification, rollout, and rollback
+- Security, operations, verification, rollout, and rollback/recovery
 - Open questions, readiness-resolution work, implementation slices, and change history
 
 ````markdown
