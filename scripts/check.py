@@ -46,6 +46,7 @@ required = [
     ROOT / ".claude-plugin" / "marketplace.json",
     ROOT / "docs" / "skill-design-research.md",
     ROOT / "docs" / "specification-workflow-basis.md",
+    ROOT / "docs" / "evaluation.md",
     SKILL / "SKILL.md",
     SKILL / "references" / "artifact-transformation.md",
     SKILL / "references" / "specification-workflow.md",

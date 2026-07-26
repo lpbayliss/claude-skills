@@ -123,7 +123,7 @@ The packaged `dist/specify.skill` is a zip-compatible Agent Skill archive for cl
 - Validate drafts against the readiness checklist, repair them, and only then issue a verdict.
 - Do not mark a spec ready while implementation still requires inventing product behaviour.
 
-The evidence behind the skill design is documented in [docs/skill-design-research.md](docs/skill-design-research.md). The engineering sources behind the specification workflow are documented in [docs/specification-workflow-basis.md](docs/specification-workflow-basis.md).
+The evidence behind the skill design is documented in [docs/skill-design-research.md](docs/skill-design-research.md). The engineering sources behind the specification workflow are documented in [docs/specification-workflow-basis.md](docs/specification-workflow-basis.md). Blind old-versus-new results and limitations are documented in [docs/evaluation.md](docs/evaluation.md).
 
 ## License
 
