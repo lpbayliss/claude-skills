@@ -123,6 +123,19 @@ try:
     ids = [item.get("id") for item in cases]
     if len(ids) < 10 or len(ids) != len(set(ids)):
         fail("evals must contain at least ten uniquely identified cases")
+    kinds = {item.get("kind") for item in cases}
+    required_kinds = {
+        "blocker",
+        "ready",
+        "conditional",
+        "greenfield-ready",
+        "update-roll-forward",
+        "spike",
+    }
+    if not required_kinds.issubset(kinds):
+        fail("evals must retain blocker, ready, conditional, greenfield, update/roll-forward, and spike coverage")
+    if sum(item.get("kind") == "blocker" for item in cases) < 5:
+        fail("evals must retain at least five blocker-oriented cases")
     for item in cases:
         if not item.get("prompt") or not item.get("expected_output"):
             fail(f"eval {item.get('id')} needs prompt and expected_output")
