@@ -117,9 +117,12 @@ The packaged `dist/specify.skill` is a zip-compatible Agent Skill archive for cl
 - Preserve product intent while challenging premature mechanisms.
 - Separate facts, requirements, constraints, decisions, assumptions, risks, and open questions.
 - Do not fabricate repository paths, metrics, targets, architecture, or approvals.
+- Separate artifact lifecycle from implementation readiness; scope every readiness verdict.
 - Give consequential requirements stable IDs and objective pass conditions.
+- Distinguish pre-implementation evidence, planned verification, and observed post-implementation results.
+- Separate readiness-resolution work from authorized implementation slices.
 - Use the smallest sufficient artifact; added length must resolve a material decision or risk.
-- Treat security, privacy, migration, public interfaces, destructive changes, and rollback as explicit decision boundaries.
+- Treat security, privacy, migration, public interfaces, destructive changes, and rollback or roll-forward recovery as explicit decision boundaries.
 - Validate drafts against the readiness checklist, repair them, and only then issue a verdict.
 - Do not mark a spec ready while implementation still requires inventing product behaviour.
 

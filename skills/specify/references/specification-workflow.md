@@ -11,7 +11,7 @@ Read this reference for full, high-risk, migration, or multi-agent specification
 - Verification design
 - Change and operating safety
 - Uncertainty and readiness
-- Implementation decomposition
+- Readiness-resolution and implementation work
 - Traceability and maintenance
 
 ## Repository grounding
@@ -76,8 +76,10 @@ Keep one independently failing obligation per requirement. For every mandatory o
 
 - evidence or rationale;
 - acceptance authority;
-- objective verification method;
+- planned verification method;
 - observable pass condition;
+- pre-implementation evidence required before coding;
+- post-implementation result/status, left pending until executed;
 - unresolved target or dependency, if any.
 
 Do not invent numeric targets. If the owner has not accepted a target, write a blocking placeholder or define a delegated measurement with a decision rule. An observed baseline is evidence, not automatically an SLO.
@@ -116,10 +118,10 @@ Capture a consequential decision with:
 
 ## Verification design
 
-Create a requirement-to-evidence matrix when traceability matters:
+Create a requirement-to-verification matrix when traceability matters:
 
-| Requirement | Evidence | Level | Command or location | Pass condition |
-|---|---|---|---|---|
+| Requirement | Planned method/evidence | Pre-implementation evidence complete? | Command or location | Pass condition | Result/status |
+|---|---|---|---|---|---|
 
 Choose test levels based on failure mode, not completeness theater. Consider, when material:
 
@@ -135,19 +137,19 @@ Include existing regression commands. Verify that tests encode the accepted inte
 
 ## Change and operating safety
 
-For production-facing work, make the change reversible or explicitly state why it is not. Address as relevant:
+For production-facing work, prefer reversibility. If reversal is unsafe or impossible, require an explicitly accepted roll-forward/recovery strategy. Address as relevant:
 
 - enable/disable and blast-radius controls;
 - staged rollout cohorts or boundaries;
-- objective expansion, stop, and rollback signals;
+- objective expansion, stop, and rollback or recovery signals;
 - old/new path compatibility and mixed versions;
-- data written before, during, and after rollback;
+- data written before, during, and after rollback or the point of no return;
 - schema upgrade, downgrade, and roll-forward strategy;
 - dependency failure, overload, resource exhaustion, and cost;
 - telemetry, alerts, dashboards, runbooks, and ownership;
 - backup, restore, disaster recovery, retention, and deletion.
 
-A flag is one mechanism. It is only a valid rollback control when disablement is fast enough, the previous path still works, and data remains interpretable.
+A flag is one mechanism. It is only a valid rollback control when disablement is fast enough, the previous path still works, and data remains interpretable. For roll-forward-only work, record irreversibility, containment, backups or recovery, rehearsal evidence, and the authority accepting residual risk.
 
 ## Uncertainty and readiness
 
@@ -165,19 +167,35 @@ Classify design latitude:
 
 Do not use `Open` to disguise a product decision. Do not use `Deferred` for work required to make the current change safe.
 
+Keep artifact lifecycle separate from implementation readiness. Record artifact status (`Draft`, `Proposed`, `Accepted`, and later lifecycle states) independently from the readiness verdict for a named scope.
+
 Readiness requires more than filled headings. A **Ready** verdict requires:
 
 - accepted problem and scope;
 - no blocking product or safety question;
-- mandatory requirements with verification;
+- mandatory requirements with planned verification and required pre-implementation evidence;
 - credible design and boundary ownership;
 - repository-grounded paths and commands when implementation is next;
-- viable rollout/rollback for production change;
+- viable rollout plus rollback or accepted roll-forward/recovery for production change;
 - required specialist review completed.
 
-## Implementation decomposition
+**Conditionally ready** means coding for the named scope may start; only named follow-up that does not gate starting that scope remains. State any later completion or rollout gate separately. Required acceptance, safety, or specialist approval needed before starting the named scope makes it **Not ready**.
 
-Only decompose accepted work. Prefer small, independently verifiable vertical slices. Each slice records:
+## Readiness-resolution and implementation work
+
+While implementation is **Not ready**, define only bounded readiness-resolution work:
+
+```text
+question or decision to resolve
+inspection, measurement, spike, review, or owner action
+evidence target
+decision rule
+owner and stop condition
+```
+
+These tasks may gather evidence but do not authorize product implementation.
+
+Only decompose accepted implementation scope. Prefer small, independently verifiable vertical slices. Each slice records:
 
 ```text
 ID and objective

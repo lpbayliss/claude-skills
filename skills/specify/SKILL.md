@@ -46,6 +46,13 @@ Choose the smallest sufficient depth. These are ceilings to resist bloat, not qu
 
 Exceed a typical ceiling only when added detail resolves a material risk or decision. Do not expand a small request into a generic architecture dossier.
 
+Track two separate axes:
+
+- **Artifact status** — `Draft`, `Proposed`, `Accepted`, `Implementing`, `Implemented`, `Rejected`, `Superseded`, or `Archived`.
+- **Implementation readiness** — `Ready`, `Conditionally ready`, or `Not ready` for a named scope.
+
+Do not substitute one axis for the other. An accepted decision can remain not ready to implement; a draft can be ready only for a tightly bounded evidence-gathering or bootstrap scope.
+
 ## Load only what the task needs
 
 - For **Transform**, read the [artifact transformation guide](references/artifact-transformation.md).
@@ -53,6 +60,7 @@ Exceed a typical ceiling only when added detail resolves a material risk or deci
 - For a **full, high-risk, migration, or multi-agent specification**, read the [detailed workflow](references/specification-workflow.md).
 - Use the [full template](references/spec-template.md) only for a full spec or when the user requests that structure.
 - Read the [mini-spec example](references/mini-spec-example.md) only to calibrate a compact, evidence-poor output.
+- For workflow provenance or a deeper domain-source audit, consult the [public specification evidence note](https://github.com/lpbayliss/claude-software-specification/blob/main/docs/specification-workflow-basis.md); it is not required for normal execution.
 
 Keep references one level deep. Do not load every reference by default.
 
@@ -74,7 +82,7 @@ Ask only when a missing answer materially changes behavior, architecture, safety
 
 ### 2. Inspect and normalize sources
 
-For an existing project, inspect local rules, comparable features, interfaces, schemas, migrations, tests, build/CI commands, deployment controls, telemetry, ADRs, incidents, and existing specs. Use exact paths and commands.
+For an existing project, inspect local rules, comparable features, interfaces, schemas, migrations, tests, build/CI commands, deployment controls, telemetry, ADRs, incidents, and existing specs. Use exact paths and commands. If implementation may follow, also inspect the current branch, working tree, and local execution constraints.
 
 When a decision depends on an external API, standard, library, platform, or current operational fact, consult the authoritative current source when tools permit. Record its URL, version, or access date; if it cannot be verified, label it unresolved rather than relying on memory.
 
@@ -119,11 +127,15 @@ Use diagrams only when they clarify a decision. Explain them in prose and label 
 
 ### 5. Design evidence and safe change
 
-Map mandatory requirements to evidence and pass conditions. Prefer real repository commands and test locations. Cover only materially relevant test levels and operating concerns; a long generic checklist is not evidence.
+Map mandatory requirements to a **planned verification method** and pass condition. Distinguish evidence already required to authorize implementation—such as repository inspection, an accepted decision, baseline measurement, or specialist review—from results that can exist only after implementation. Never report a planned test as a passing result.
 
-For production-facing change, define staged enablement, observable success/degradation signals, rollback triggers, and data behavior after rollback. Address migration, compatibility, capacity, cost, backup/restore, retention, or runbooks only where the change creates those obligations.
+Prefer real repository commands and test locations for the implementation scope being authorized. Cover only materially relevant test levels and operating concerns; a long generic checklist is not evidence.
 
-Decompose work only after the contract is accepted enough to implement. Each slice should identify requirements covered, dependencies, expected components, tests, exact verification, rollback/cleanup, and shared-write hazards. Parallelize independent decisions and write sets; give shared schemas, migrations, and public contracts one owner.
+For production-facing change, define staged enablement, observable success/degradation signals, and either a rollback path or an explicitly accepted roll-forward/recovery strategy. For irreversible work, identify the point of no return, containment, backup/recovery evidence, rehearsal, and acceptance authority. Address migration, compatibility, capacity, cost, retention, or runbooks only where the change creates those obligations.
+
+When implementation is **Not ready**, emit only **readiness-resolution work**: a bounded inspection, measurement, spike, review, or owner decision with an evidence target and decision rule. Do not disguise it as implementation.
+
+Emit **implementation slices** only for accepted scope that is ready enough to code. Each slice should identify requirements covered, dependencies, expected components, tests, exact verification, rollback/cleanup, and shared-write hazards. Parallelize independent decisions and write sets; give shared schemas, migrations, and public contracts one owner.
 
 ### 6. Review, repair, and issue the verdict
 
@@ -133,14 +145,14 @@ Use the [review checklist](references/review-checklist.md) as a semantic validat
 2. Check it against the relevant checklist sections.
 3. Repair omissions, contradictions, unsupported claims, and excess detail.
 4. Repeat until no fixable issue remains.
-5. Lead with exactly one verdict when reviewing or claiming readiness:
-   - **Ready** — implementation may proceed within accepted constraints.
-   - **Conditionally ready** — only named non-blocking evidence or approval remains.
-   - **Not ready** — blocking reasons appear before proposed corrections.
+5. State artifact status and lead with exactly one implementation-readiness verdict when reviewing or authorizing work:
+   - **Ready** — the named implementation scope may proceed within accepted constraints.
+   - **Conditionally ready** — the named scope may start; only named follow-up that does not gate starting that scope remains. State any later completion or rollout gate. An approval required to start the named scope is never a condition.
+   - **Not ready** — blocking reasons appear before proposed corrections or readiness-resolution work.
 
-A blocking question, invented product behavior, missing mandatory verification, unknown required repository command, unsafe rollback, or missing specialist review prevents **Ready**.
+A blocking question, invented product behavior, missing mandatory verification plan, unknown command required by the authorized scope, unsafe rollback/recovery, gating approval, or missing required specialist review prevents **Ready**.
 
-For high-impact security, privacy, distributed-system, data-governance, migration, or causal-inference work, require independent specialist review before readiness. Label early public work `Draft — independent review pending`.
+For high-impact security, privacy, distributed-system, data-governance, migration, or causal-inference work, require independent specialist review before readiness. Record `Artifact status: Draft` and `Implementation readiness: Not ready — independent review pending`; do not collapse them into one label.
 
 ## Output rules
 
@@ -149,6 +161,7 @@ For high-impact security, privacy, distributed-system, data-governance, migratio
 - Preserve the original artifact unless the user explicitly requests in-place editing.
 - For Transform, summarize what was preserved, corrected, reclassified, removed, conflicted, and left unresolved.
 - For Review, prioritize findings by impact and cite exact source headings or stable line ranges when available; do not rewrite the whole document unless asked.
+- Label readiness-resolution work separately from implementation slices and state the gate between them.
 - Mark unknowns as **Blocking**, **Delegated**, or **Deferred**. Never turn a blocking product decision into an implementation assumption.
 - Maintain traceability from need → requirement → decision → task → evidence without repeating the same prose in every section.
 

@@ -53,13 +53,14 @@ Use this as a risk-based review, not a form-filling exercise. Score `0 absent`, 
 
 ## Verification and delivery
 
-- [ ] Every mandatory requirement maps to evidence.
+- [ ] Every mandatory requirement maps to a planned verification method and observable pass condition.
+- [ ] Evidence required before coding is distinguished from post-implementation results; planned checks are not reported as completed.
 - [ ] Existing tests that must remain green are named.
 - [ ] New unit, integration, contract, e2e, migration, performance, security, or resilience tests are specified as needed.
-- [ ] Verification uses real repository commands and locations.
+- [ ] Verification uses real repository commands and locations for the implementation scope being authorized.
 - [ ] Enable/disable, rollout cohorts, and blast-radius controls are defined.
-- [ ] Success, degradation, and rollback signals are objective.
-- [ ] Data behaviour on rollback is defined.
+- [ ] Success, degradation, and rollback or recovery signals are objective.
+- [ ] Data behaviour on rollback, recovery, or after the point of no return is defined.
 - [ ] Upgrade/downgrade/version-skew paths are defined and tested where relevant.
 
 ## Agent readiness
@@ -68,7 +69,8 @@ Use this as a risk-based review, not a form-filling exercise. Score `0 absent`, 
 - [ ] Exact paths are used; generic architecture guesses are absent.
 - [ ] Fixed, preferred, and open decisions are distinguishable.
 - [ ] Blocking, delegated, and deferred questions are classified.
-- [ ] Tasks map to requirement IDs and objective evidence.
+- [ ] Readiness-resolution work is distinct from implementation slices and has evidence targets and decision rules.
+- [ ] Implementation slices appear only for accepted scope and map to requirement IDs and objective verification.
 - [ ] Tasks are independently verifiable and small enough to review.
 - [ ] Parallel tasks have independent write sets; shared contracts have one owner.
 - [ ] Stop/escalation conditions cover destructive, public-interface, security, privacy, and hard-to-rollback decisions.
@@ -76,7 +78,8 @@ Use this as a risk-based review, not a form-filling exercise. Score `0 absent`, 
 
 ## Lifecycle
 
-- [ ] Owner, reviewers, advisory/blocking authority, status, and decision deadline are clear.
+- [ ] Owner, reviewers, advisory/blocking authority, artifact status, implementation-readiness verdict, and decision deadline are clear.
+- [ ] `Conditionally ready` contains no gating approval, product decision, safety evidence, or mandatory specialist review required before starting the named scope; any later completion or rollout gate is explicit.
 - [ ] The spec is version controlled or has an equivalent change history.
 - [ ] Code, tasks, ADRs, tests, and rollout evidence can be traced.
 - [ ] Maintenance, freshness, supersession, and archival rules are clear.
@@ -89,6 +92,6 @@ Do not mark ready if any are true:
 - a blocking question remains unresolved;
 - product behaviour must still be invented during implementation;
 - destructive migration, security/privacy boundary, or public API impact is undecided;
-- production rollout has no containment or rollback path;
-- exact repository context and verification commands are unknown;
+- production rollout has no containment and no accepted rollback or roll-forward/recovery strategy;
+- exact repository context or verification commands required by the implementation scope being authorized are unknown;
 - critical specialist review is missing.

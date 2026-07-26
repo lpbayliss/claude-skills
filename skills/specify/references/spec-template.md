@@ -8,12 +8,14 @@ Use this only for work that warrants a full specification. Delete sections that 
 - Context, goals, and requirements
 - System behavior, interfaces, data, and design
 - Security, operations, verification, rollout, and rollback
-- Open questions, implementation slices, and change history
+- Open questions, readiness-resolution work, implementation slices, and change history
 
 ````markdown
 ---
 title: [Decision-oriented title]
 status: draft | proposed | accepted | implementing | implemented | rejected | superseded | archived
+implementation_readiness: ready | conditionally-ready | not-ready
+readiness_scope: [exact scope covered by the verdict]
 owner: [DRI]
 reviewers:
   product: []
@@ -33,7 +35,8 @@ related: [issues, ADRs, incidents, designs]
 - **Proposed direction:**
 - **Expected outcome:**
 - **Decision required:**
-- **Current status:**
+- **Artifact status:**
+- **Implementation readiness and scope:**
 
 ## 2. Context and evidence
 ### Current state
@@ -103,14 +106,14 @@ flowchart LR
 ### Migration and compatibility
 ### Enable/disable and blast-radius control
 ### Staged rollout
-### Rollback and data recovery
+### Rollback or accepted roll-forward/recovery strategy
 ### Upgrade/downgrade/version skew
 ### Capacity and cost
 ### Documentation, support, and runbooks
 
 ## 9. Verification
-| Requirement | Evidence | Level | Command/location | Pass condition |
-|---|---|---|---|---|
+| Requirement | Planned method/evidence | Pre-implementation evidence complete? | Command/location | Pass condition | Result/status |
+|---|---|---|---|---|---|
 ### Existing regression suite
 ### New test plan
 ### Security, performance, migration, and resilience evidence
@@ -129,7 +132,14 @@ flowchart LR
 |---|---|---|---|---|
 ### Deferred work
 
-## 11. Agent implementation plan
+## 11. Readiness-resolution and implementation work
+
+When implementation is not ready, list only bounded resolution work:
+
+| Question/decision | Inspection, measurement, spike, review, or owner action | Evidence target | Decision rule | Owner |
+|---|---|---|---|---|
+
+Add implementation slices only for accepted scope whose readiness verdict permits coding. State any prerequisite gate.
 
 For each task:
 
