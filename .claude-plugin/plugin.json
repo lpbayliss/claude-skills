@@ -1,6 +1,6 @@
 {
   "name": "software-specification",
-  "description": "Create, review, and transform implementation-ready software specifications.",
+  "description": "Create, review, repair, and transform decision-ready software specifications.",
   "author": {
     "name": "Luke Bayliss",
     "url": "https://github.com/lpbayliss"

@@ -44,13 +44,17 @@ required = [
     ROOT / "LICENSE",
     ROOT / ".claude-plugin" / "plugin.json",
     ROOT / ".claude-plugin" / "marketplace.json",
+    ROOT / "docs" / "skill-design-research.md",
+    ROOT / "docs" / "specification-workflow-basis.md",
+    ROOT / "docs" / "evaluation.md",
     SKILL / "SKILL.md",
     SKILL / "references" / "artifact-transformation.md",
+    SKILL / "references" / "specification-workflow.md",
     SKILL / "references" / "spec-template.md",
     SKILL / "references" / "review-checklist.md",
     SKILL / "references" / "mini-spec-example.md",
-    SKILL / "references" / "source-basis.md",
     SKILL / "evals" / "evals.json",
+    SKILL / "evals" / "trigger-evals.json",
 ]
 for path in required:
     read(path)
@@ -74,6 +78,7 @@ json_paths = [
     ROOT / ".claude-plugin" / "plugin.json",
     ROOT / ".claude-plugin" / "marketplace.json",
     SKILL / "evals" / "evals.json",
+    SKILL / "evals" / "trigger-evals.json",
 ]
 for path in json_paths:
     try:
@@ -96,12 +101,66 @@ for reference in set(re.findall(r"references/[A-Za-z0-9._-]+\.md", text)):
     if not target.is_file():
         fail(f"broken SKILL.md reference: {reference}")
 
+for reference in (SKILL / "references").glob("*.md"):
+    reference_text = read(reference)
+    if len(reference_text.splitlines()) > 100 and "## Contents" not in reference_text:
+        fail(f"reference over 100 lines needs a Contents section: {reference.relative_to(ROOT)}")
+
+for markdown in ROOT.rglob("*.md"):
+    if ".git" in markdown.parts or "dist" in markdown.parts:
+        continue
+    markdown_text = read(markdown)
+    for target in re.findall(r"(?<!!)\[[^\]]*\]\(([^)]+)\)", markdown_text):
+        relative = target.split("#", 1)[0]
+        if not relative or "://" in relative or relative.startswith("mailto:"):
+            continue
+        if not (markdown.parent / relative).resolve().exists():
+            fail(f"broken relative link in {markdown.relative_to(ROOT)}: {target}")
+
 try:
     evals = json.loads(read(SKILL / "evals" / "evals.json"))
-    ids = [item.get("id") for item in evals.get("evals", [])]
-    if len(ids) < 4 or len(ids) != len(set(ids)):
-        fail("evals must contain at least four uniquely identified cases")
+    cases = evals.get("evals", [])
+    ids = [item.get("id") for item in cases]
+    if len(ids) < 10 or len(ids) != len(set(ids)):
+        fail("evals must contain at least ten uniquely identified cases")
+    kinds = {item.get("kind") for item in cases}
+    required_kinds = {
+        "blocker",
+        "ready",
+        "conditional",
+        "greenfield-ready",
+        "update-roll-forward",
+        "spike",
+    }
+    if not required_kinds.issubset(kinds):
+        fail("evals must retain blocker, ready, conditional, greenfield, update/roll-forward, and spike coverage")
+    if sum(item.get("kind") == "blocker" for item in cases) < 5:
+        fail("evals must retain at least five blocker-oriented cases")
+    for item in cases:
+        if not item.get("prompt") or not item.get("expected_output"):
+            fail(f"eval {item.get('id')} needs prompt and expected_output")
+        assertions = item.get("assertions", [])
+        if len(assertions) < 4 or not all(isinstance(value, str) and value for value in assertions):
+            fail(f"eval {item.get('id')} needs at least four non-empty assertions")
+        for relative in item.get("files", []):
+            target = SKILL / relative
+            if not target.is_file():
+                fail(f"eval {item.get('id')} references missing file: {relative}")
 except (json.JSONDecodeError, AttributeError):
+    pass
+
+try:
+    trigger_evals = json.loads(read(SKILL / "evals" / "trigger-evals.json"))
+    if not isinstance(trigger_evals, list) or len(trigger_evals) != 20:
+        fail("trigger evals must contain exactly 20 cases")
+    else:
+        positives = sum(item.get("should_trigger") is True for item in trigger_evals)
+        negatives = sum(item.get("should_trigger") is False for item in trigger_evals)
+        if positives != 10 or negatives != 10:
+            fail("trigger evals must contain ten positive and ten negative cases")
+        if any(not isinstance(item.get("query"), str) or not item["query"].strip() for item in trigger_evals):
+            fail("every trigger eval needs a non-empty query")
+except (json.JSONDecodeError, AttributeError, TypeError):
     pass
 
 if ERRORS:

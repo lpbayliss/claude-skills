@@ -9,7 +9,7 @@
     {
       "name": "software-specification",
       "source": "./",
-      "description": "Create, review, and transform implementation-ready software specifications.",
+      "description": "Create, review, repair, and transform decision-ready software specifications.",
       "homepage": "https://github.com/lpbayliss/claude-software-specification",
       "repository": "https://github.com/lpbayliss/claude-software-specification",
       "license": "MIT",

@@ -1,0 +1,82 @@
+[
+  {
+    "query": "We need a technical spec for rotating customer encryption keys without downtime. Inspect services/key-manager and make the migration and rollback explicit before anyone codes.",
+    "should_trigger": true
+  },
+  {
+    "query": "can you turn docs/checkout-brain-dump.md plus the whiteboard screenshot in docs/flow.png into something three coding agents can implement safely?",
+    "should_trigger": true
+  },
+  {
+    "query": "Review RFC-42 and tell me if it is actually ready for implementation; focus on unresolved product behavior and missing verification.",
+    "should_trigger": true
+  },
+  {
+    "query": "Scope the work for adding organization-level audit log export. I want the API contract, retention decisions, test evidence, rollout, and agent-sized slices, not code yet.",
+    "should_trigger": true
+  },
+  {
+    "query": "Our tickets disagree about whether deleted accounts keep invoices. Reconcile the sources into a mini-spec but don't pick a policy for us.",
+    "should_trigger": true
+  },
+  {
+    "query": "The implementation revealed that our accepted sync design cannot preserve ordering. Update the design spec and show which decisions and tasks are superseded.",
+    "should_trigger": true
+  },
+  {
+    "query": "Not enough evidence to choose Kafka versus a database outbox. Write a spike brief with an experiment and a decision rule.",
+    "should_trigger": true
+  },
+  {
+    "query": "Formalise these rough notes into a PRD/RFC for passkeys, including recovery and the password migration boundary.",
+    "should_trigger": true
+  },
+  {
+    "query": "Before we touch the schema, draft an implementation-ready migration proposal for splitting the orders table with compatibility and rollback.",
+    "should_trigger": true
+  },
+  {
+    "query": "This issue says 'make search fast with Elasticsearch'. Critique the framing and produce the smallest decision-ready issue contract without inventing a latency target.",
+    "should_trigger": true
+  },
+  {
+    "query": "Implement the accepted passkey spec in docs/passkeys.md, add tests, and run the existing verification commands.",
+    "should_trigger": false
+  },
+  {
+    "query": "The auth test started failing after yesterday's merge. Reproduce it, find the regression, fix it, and run the targeted suite.",
+    "should_trigger": false
+  },
+  {
+    "query": "Summarize RFC-42 in five bullets for the release channel. Do not critique or change it.",
+    "should_trigger": false
+  },
+  {
+    "query": "Review this pull request for correctness, security issues, and missing tests. Leave the design document alone.",
+    "should_trigger": false
+  },
+  {
+    "query": "Draw a Mermaid sequence diagram from the already accepted API flow in docs/contracts.md; no design changes needed.",
+    "should_trigger": false
+  },
+  {
+    "query": "Update the README installation section to use pnpm instead of npm and verify the links.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain what the existing ADR means by eventual consistency and give me a simple example.",
+    "should_trigger": false
+  },
+  {
+    "query": "Estimate how long the finalized notifications spec will take and assign the existing Linear issues to this sprint.",
+    "should_trigger": false
+  },
+  {
+    "query": "Brainstorm ten possible social features for the app; we are exploring ideas and do not want scope or a spec yet.",
+    "should_trigger": false
+  },
+  {
+    "query": "Run the migration described in docs/order-split.md on staging, monitor it, and roll back if the documented threshold is crossed.",
+    "should_trigger": false
+  }
+]

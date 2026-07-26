@@ -1,283 +1,177 @@
 ---
 name: specify
-description: Create, review, repair, or transform software specifications into decision-ready and implementation-ready contracts. Use for new projects, features, services, migrations, architecture changes, RFCs, PRDs, design docs, implementation plans, issue sets, diagrams, rough notes, or existing specs—even when the user only asks to plan, scope, improve, formalize, critique, or make work ready for humans or coding agents.
+description: Creates, reviews, repairs, and transforms software specifications into decision-ready, implementation-ready contracts. Use when the user needs a spec, RFC, PRD, technical design, implementation plan, scoped issue contract, architecture or migration proposal, or wants rough notes, tickets, diagrams, screenshots, or an existing document made ready for humans or coding agents. Also use when asked to plan, scope, formalize, critique, or assess readiness before non-trivial software work. Do not use for straightforward coding, debugging, or explanation when no specification, planning, or design decision is needed.
 license: MIT
-compatibility: Designed for Claude Code and compatible Agent Skills clients; repository-aware work requires file and search tools.
+compatibility: Designed for Claude Code and compatible Agent Skills clients; repository work requires file/search tools, and visual artifacts require image inspection or supplied extraction.
 metadata:
   author: lpbayliss
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Software Specification Workflow
 
-Produce the smallest artifact that safely resolves uncertainty and can govern implementation. Preserve intent, expose ambiguity, and connect every important claim to evidence and verification.
+Produce the smallest specification that safely resolves the decision at hand. Preserve intent, expose uncertainty, and connect consequential claims to evidence and verification.
 
-The default deliverable is the specification, not code. Implement only when the user explicitly requests execution and the readiness gate permits it; otherwise stop at the accepted implementation slices.
+The default deliverable is a specification, not code. Implement only when the user explicitly asks and the readiness gate passes.
 
-## Core chain
+## Non-negotiables
 
-Do not turn a vague request directly into an implementation checklist. Build:
+- Inspect supplied artifacts and available repository evidence before designing.
+- Preserve source provenance and accepted intent; never silently rewrite history.
+- Do not invent product decisions, numeric targets, repository paths, commands, interfaces, or diagram semantics.
+- Scale detail with ambiguity, blast radius, reversibility, and cost of error.
+- Stop at unresolved security, privacy, destructive migration, public-interface, data-loss, or hard-to-rollback decisions.
+- Do not call work ready merely because a template is complete.
 
-```text
-problem evidence → goals/non-goals → requirements → design decisions →
-verification → rollout/operations → implementation slices
-```
+## Choose mode and depth
 
-For small work, compress this chain into a mini-spec; do not omit it.
+Choose one primary mode:
 
-## Select the operating mode
+| Mode | Use when | Default result |
+|---|---|---|
+| **Create** | Starting from an idea, problem, issue, or repository | New specification |
+| **Transform** | Existing prose, tickets, diagrams, screenshots, or mixed artifacts need improvement | Revised specification plus change summary |
+| **Review** | The user wants readiness, gaps, or critique | Verdict and prioritized findings; rewrite only if requested |
+| **Update** | New evidence or implementation discoveries change an accepted spec | Revised spec, changed decisions, and supersession note |
 
-Choose from the supplied material and request:
+Choose the smallest sufficient depth. These are ceilings to resist bloat, not quotas:
 
-- **Create** — derive a new specification from an idea, problem, issue, or repository.
-- **Transform** — convert existing artifacts into a stronger specification while preserving provenance and accepted intent.
-- **Review** — assess readiness and return findings before proposing corrections.
-- **Update** — revise an accepted spec using new evidence or implementation discoveries, preserving change history.
+| Depth | Use when | Typical size |
+|---|---|---:|
+| **Issue contract** | Routine, local, reversible work with a proven repository pattern | Up to about 700 words |
+| **Mini-spec** | Bounded, non-obvious work with a few decisions | Up to about 1,800 words |
+| **Full specification** | Cross-component, security-sensitive, migration-heavy, long-lived, or multi-agent work | As needed for material decisions |
+| **Spike brief** | Evidence is too weak to select a design | Hypothesis, experiment, evidence, decision rule |
+| **Review report** | Readiness must be assessed before rewriting | Findings only unless correction is requested |
 
-When transforming prose, diagrams, tickets, ADRs, screenshots, or mixed artifacts, read the [artifact transformation guide](references/artifact-transformation.md) before drafting. When reviewing, read the [review checklist](references/review-checklist.md). For a full specification, use the [full template](references/spec-template.md). For a compact evidence-poor example, read the [mini-spec example](references/mini-spec-example.md).
+Exceed a typical ceiling only when added detail resolves a material risk or decision. Do not expand a small request into a generic architecture dossier.
 
-## Choose artifact depth
+Track two separate axes:
 
-Use the smallest useful form:
+- **Artifact status** — `Draft`, `Proposed`, `Accepted`, `Implementing`, `Implemented`, `Rejected`, `Superseded`, or `Archived`.
+- **Implementation readiness** — `Ready`, `Conditionally ready`, or `Not ready` for a named scope.
 
-- **Issue contract** — routine, local, reversible work with an established repository pattern.
-- **Mini-spec** — bounded but non-obvious work, usually 1–3 pages.
-- **Full specification** — cross-component, high-risk, security-sensitive, migration-heavy, long-lived, or multi-agent work.
-- **Spike brief** — evidence is too weak to choose a design; define a hypothesis, experiment, evidence, and decision rule.
-- **Review report** — readiness and gaps are needed before rewriting.
+Do not substitute one axis for the other. An accepted decision can remain not ready to implement; a draft can be ready only for a tightly bounded evidence-gathering or bootstrap scope.
 
-Template size is not rigor. Scale depth with ambiguity, blast radius, reversibility, and cost of being wrong.
+## Load only what the task needs
 
-## Workflow
+- For **Transform**, read the [artifact transformation guide](references/artifact-transformation.md).
+- For **Review** or any readiness claim, read the [review checklist](references/review-checklist.md).
+- For a **full, high-risk, migration, or multi-agent specification**, read the [detailed workflow](references/specification-workflow.md).
+- Use the [full template](references/spec-template.md) only for a full spec or when the user requests that structure.
+- Read the [mini-spec example](references/mini-spec-example.md) only to calibrate a compact, evidence-poor output.
+- For workflow provenance or a deeper domain-source audit, consult the [public specification evidence note](https://github.com/lpbayliss/claude-software-specification/blob/main/docs/specification-workflow-basis.md); it is not required for normal execution.
 
-### 1. Establish the decision boundary
+Keep references one level deep. Do not load every reference by default.
 
-Extract:
+## Progress loop
 
-- desired outcome and affected users;
-- stakeholders and acceptance authority;
-- fixed constraints and known non-goals;
-- deadlines or sequencing;
-- decisions requested now;
-- whether the user wants planning only or implementation too.
+Track this loop for multi-step work; report the artifact rather than narrating the process:
 
-Ask only when missing information materially changes product behaviour, architecture, safety, public interfaces, destructive scope, or rollback. For low-risk unknowns, continue with explicit assumptions.
+- [ ] Frame the decision and choose mode/depth
+- [ ] Inspect and normalize sources
+- [ ] Draft the contract
+- [ ] Design verification and change safety
+- [ ] Review, repair, and issue the verdict
 
-### 2. Inspect sources of truth
+### 1. Frame the decision
 
-For an existing project, inspect before designing:
+Extract the desired outcome, affected users, acceptance authority, fixed constraints, known non-goals, decisions needed now, and whether implementation is requested.
 
-- `CLAUDE.md`, `AGENTS.md`, contribution guidance, and local rules;
-- module boundaries and comparable features;
-- public interfaces, schemas, migrations, events, and generated files;
-- tests, fixtures, build scripts, CI, lint, and type-check commands;
-- deployment, feature-control, telemetry, and rollback conventions;
-- relevant ADRs, issues, incidents, support evidence, and existing specs;
-- current branch and working-tree constraints if execution may follow.
+Ask only when a missing answer materially changes behavior, architecture, safety, a public interface, destructive scope, or rollback. Otherwise continue with an explicit assumption or unresolved marker.
 
-Use exact paths and real commands. Do not invent repository structure. If no repository is available, label the work greenfield. If only prose or images are supplied, keep repository-specific details unresolved and do not claim implementation readiness.
+### 2. Inspect and normalize sources
 
-### 3. Preserve provenance and classify statements
+For an existing project, inspect local rules, comparable features, interfaces, schemas, migrations, tests, build/CI commands, deployment controls, telemetry, ADRs, incidents, and existing specs. Use exact paths and commands. If implementation may follow, also inspect the current branch, working tree, and local execution constraints.
 
-Maintain a short evidence table:
+When a decision depends on an external API, standard, library, platform, or current operational fact, consult the authoritative current source when tools permit. Record its URL, version, or access date; if it cannot be verified, label it unresolved rather than relying on memory.
 
-| Claim | Evidence/source | Confidence | Implication |
-|---|---|---:|---|
+If no repository is available, say the work is greenfield. If repository evidence is required but unavailable, keep paths and commands unresolved and do not claim implementation readiness.
 
-Classify consequential source statements as:
+Build a compact evidence map for consequential claims:
 
-- **Fact** — evidenced current state.
-- **Requirement** — agreed observable obligation.
-- **Constraint** — fixed boundary on valid solutions.
-- **Decision** — selected option with authority.
-- **Assumption** — believed but unproven.
-- **Risk** — possible harmful outcome.
-- **Open question** — unresolved information or decision.
+| Claim | Classification | Source | Confidence | Implication |
+|---|---|---|---:|---|
 
-Do not silently promote proposals or examples into requirements. Do not erase conflicting source material; surface the conflict and name the authority needed to resolve it.
+Classify statements as **fact, requirement, constraint, decision, assumption, risk,** or **open question**. Treat examples and proposed technologies as proposals unless an accepted decision or hard constraint fixes them.
 
-### 4. Frame the problem before the solution
+When sources disagree, preserve the conflict, identify the affected decision, and name who or what can resolve it. Do not average incompatible claims or silently choose the most convenient source.
 
-Write:
+### 3. Draft the contract
 
-- a one-paragraph decision summary;
-- current state and problem evidence;
-- stakeholders and audience;
-- goals as observable outcomes;
-- plausible adjacent non-goals;
-- success measures and constraints;
-- glossary where terms could be misunderstood.
+Frame the problem before the solution. Include only sections that help decide or verify the work:
 
-If the source embeds an unvalidated technology or architecture, treat it as a candidate unless the user, accepted decision, or hard constraint fixes it. Preserve the intended outcome, not the premature mechanism.
+- decision summary and evidence;
+- goals and plausible non-goals;
+- relevant journeys, failure/recovery behavior, boundaries, and invariants;
+- testable requirements and acceptance evidence;
+- selected design, credible alternatives, and consequential trade-offs;
+- material risks, rollout, rollback, and operations;
+- open questions and implementation slices when ready.
 
-### 5. Model behaviour and boundaries
+For consequential requirements, use stable IDs when traceability adds value. Keep one independently failing obligation per requirement, include its source/rationale, and define an observable pass condition.
 
-Cover proportionately:
+Replace vague terms such as `fast`, `scalable`, `robust`, or `user-friendly` with evidence-backed measures. If no measure is accepted, use `[BLOCKING: owner-approved target]` or `[DELEGATED: named measurement and decision rule]`; never manufacture precision.
 
-- primary journeys;
-- alternate, error, cancellation, and recovery flows;
-- administration, support, and operations;
-- concurrency, retries, idempotency, ordering, timeouts, and backpressure;
-- lifecycle, migration, compatibility, deletion, and rollback;
-- abuse and threat scenarios;
-- system, trust, data, ownership, and external dependency boundaries.
+### 4. Select the design proportionately
 
-Use diagrams only when they clarify a decision. Explain each diagram in prose and label relationships and trust boundaries.
+Default to the simplest solution that satisfies accepted requirements. Compare only credible alternatives; include the status quo when it is credible. Explain why the selected option wins and what evidence could change the decision.
 
-### 6. Write requirements as testable contracts
+Separate solution latitude:
 
-Give consequential requirements stable IDs:
-
-- `FR-*` functional behaviour;
-- `QR-*` quality and SLO targets;
-- `SEC-*` security and privacy;
-- `DATA-*` integrity and lifecycle;
-- `INT-*` interfaces and compatibility;
-- `OPS-*` operations and readiness.
-
-Use:
-
-```text
-[Condition] + [subject] + must/should/may + [observable behaviour] +
-[object] + [measurable limit or qualification].
-```
-
-Keep one independently-failable obligation per requirement. For each mandatory requirement, record its rationale/source and an objective verification method with a pass condition.
-
-Avoid `fast`, `scalable`, `robust`, `seamless`, `user-friendly`, `where possible`, and similar terms unless objectively defined. Do not invent numeric targets. Use `[BLOCKING: owner-approved target]` or `[DELEGATED: named measurement]` and explain how it will be resolved.
-
-### 7. Compare credible designs
-
-Start with the simplest solution satisfying accepted requirements. Include the status quo when credible. For each serious option compare:
-
-- requirements covered;
-- responsibilities, interfaces, state, and data ownership;
-- failure and degraded behaviour;
-- security and privacy boundaries;
-- operational load and observability;
-- migration, rollback, and compatibility;
-- cost, complexity, and maintenance;
-- assumptions and unknowns.
-
-Do not create straw alternatives. Capture consequential choices as linked ADRs with context, decision, status, consequences, alternatives, and supersession rules.
-
-### 8. Design verification before implementation
-
-Create a requirement-to-evidence matrix:
-
-| Requirement | Evidence | Level | Command/location | Pass condition |
-|---|---|---|---|---|
-
-Include existing regressions and proportionate unit, integration, contract, end-to-end, migration, performance, security, accessibility, resilience, property, and production evidence. Passing tests is insufficient if the tests encode the wrong interpretation; validate evidence against requirements and invariants.
-
-### 9. Define change and operating safety
-
-For production-facing work, address:
-
-- enable/disable and blast-radius controls;
-- staged rollout and objective success/degradation/rollback signals;
-- data behaviour on rollback;
-- upgrade, downgrade, and version skew;
-- dependency, capacity, resource exhaustion, and cost impact;
-- telemetry, alerts, dashboards, runbooks, and ownership;
-- backup, restore, disaster recovery, retention, and deletion where relevant.
-
-Write `None — [reason]` for a risk area considered and found irrelevant.
-
-### 10. Classify uncertainty
-
-Label every open question:
-
-- **Blocking** — implementation stops until answered.
-- **Delegated** — an agent may resolve it through a named investigation and decision rule.
-- **Deferred** — deliberately outside current scope.
-
-Label solution latitude:
-
-- **Fixed** — invariant, accepted decision, compatibility contract, or mandatory behaviour.
+- **Fixed** — invariant, accepted decision, mandatory behavior, or compatibility contract.
 - **Preferred** — established pattern; deviation needs rationale.
-- **Open** — implementation may choose after inspection.
+- **Open** — implementation may choose after bounded investigation.
 
-Never convert a blocking product decision into an implementation assumption.
+Use diagrams only when they clarify a decision. Explain them in prose and label relationships, ownership, data movement, and trust boundaries.
 
-### 11. Decompose accepted work
+### 5. Design evidence and safe change
 
-Only after requirements and design are sufficiently accepted, create small ordered tasks. Each task includes:
+Map mandatory requirements to a **planned verification method** and pass condition. Distinguish evidence already required to authorize implementation—such as repository inspection, an accepted decision, baseline measurement, or specialist review—from results that can exist only after implementation. Never report a planned test as a passing result.
 
-```text
-ID and objective
-Requirements covered
-Expected files/components
-Preconditions and dependencies
-Implementation steps
-Tests to add or update
-Exact verification command
-Expected observable result
-Rollback or cleanup
-Parallel-safety and shared-write warnings
-```
+Prefer real repository commands and test locations for the implementation scope being authorized. Cover only materially relevant test levels and operating concerns; a long generic checklist is not evidence.
 
-Prefer independently verifiable vertical slices. Parallelise only independent decisions and write sets. Give shared schemas, migrations, contracts, and public interfaces one authoritative owner.
+For production-facing change, define staged enablement, observable success/degradation signals, and either a rollback path or an explicitly accepted roll-forward/recovery strategy. For irreversible work, identify the point of no return, containment, backup/recovery evidence, rehearsal, and acceptance authority. Address migration, compatibility, capacity, cost, retention, or runbooks only where the change creates those obligations.
 
-### 12. Run the readiness gate
+When implementation is **Not ready**, emit only **readiness-resolution work**: a bounded inspection, measurement, spike, review, or owner decision with an evidence target and decision rule. Do not disguise it as implementation.
 
-Begin every review with exactly one verdict:
+Emit **implementation slices** only for accepted scope that is ready enough to code. Each slice should identify requirements covered, dependencies, expected components, tests, exact verification, rollback/cleanup, and shared-write hazards. Parallelize independent decisions and write sets; give shared schemas, migrations, and public contracts one owner.
 
-- **Ready** — implementation may proceed within accepted constraints.
-- **Conditionally ready** — only named non-blocking evidence or approvals remain.
-- **Not ready** — blocking reasons are listed before corrections.
+### 6. Review, repair, and issue the verdict
 
-Do not mark ready when any mandatory requirement lacks verification, a blocking question remains, product behaviour must be invented during implementation, a material security/privacy/public-interface/destructive decision is unresolved, rollback is not credible, repository paths or commands are unknown, or required specialist review is missing.
+Use the [review checklist](references/review-checklist.md) as a semantic validator:
 
-For high-impact security, privacy, distributed-system, data-governance, migration, or causal-inference work, require independent specialist review before declaring readiness. An early public draft must say `Draft — independent review pending` rather than pretending to be an implementation contract.
+1. Draft the artifact.
+2. Check it against the relevant checklist sections.
+3. Repair omissions, contradictions, unsupported claims, and excess detail.
+4. Repeat until no fixable issue remains.
+5. State artifact status and lead with exactly one implementation-readiness verdict when reviewing or authorizing work:
+   - **Ready** — the named implementation scope may proceed within accepted constraints.
+   - **Conditionally ready** — the named scope may start; only named follow-up that does not gate starting that scope remains. State any later completion or rollout gate. An approval required to start the named scope is never a condition.
+   - **Not ready** — blocking reasons appear before proposed corrections or readiness-resolution work.
+
+A blocking question, invented product behavior, missing mandatory verification plan, unknown command required by the authorized scope, unsafe rollback/recovery, gating approval, or missing required specialist review prevents **Ready**.
+
+For high-impact security, privacy, distributed-system, data-governance, migration, or causal-inference work, require independent specialist review before readiness. Record `Artifact status: Draft` and `Implementation readiness: Not ready — independent review pending`; do not collapse them into one label.
 
 ## Output rules
 
-Lead with decision-ready material, not process narration. Use this compact shape unless risk requires the full template:
+- Lead with the decision, verdict, or corrected artifact—not process narration.
+- Omit irrelevant headings. If a selected template requires a considered risk area, use `None — [reason]` rather than filler.
+- Preserve the original artifact unless the user explicitly requests in-place editing.
+- For Transform, summarize what was preserved, corrected, reclassified, removed, conflicted, and left unresolved.
+- For Review, prioritize findings by impact and cite exact source headings or stable line ranges when available; do not rewrite the whole document unless asked.
+- Label readiness-resolution work separately from implementation slices and state the gate between them.
+- Mark unknowns as **Blocking**, **Delegated**, or **Deferred**. Never turn a blocking product decision into an implementation assumption.
+- Maintain traceability from need → requirement → decision → task → evidence without repeating the same prose in every section.
 
-```markdown
-# [Title]
-**Status:** Ready | Conditionally ready | Not ready — [reasons]
-**Decision owner / acceptance authority:** [name, role, or BLOCKING]
-## Decision summary
-## Context and evidence
-## Goals / non-goals
-## Requirements and acceptance
-## Proposed design and alternatives
-## Risks, rollout, and rollback
-## Verification
-## Open questions
-## Implementation slices
-## Source transformation summary (when applicable)
-```
+## Gotchas
 
-When transforming existing material, include a concise summary of what was preserved, corrected, reclassified, removed, and left unresolved. Preserve the original artifact unless the user explicitly asks for in-place editing.
-
-## Agentic safeguards
-
-- State invariants and forbidden outcomes, not only positive examples.
-- Preserve traceability from need → requirement → decision → task → code → evidence.
-- Require exact repository paths and commands before declaring execution readiness.
-- Stop autonomous work at unresolved security, privacy, destructive migration, public API, data-loss, or hard-to-rollback decisions.
-- Update or supersede the spec when implementation invalidates an assumption; do not hide divergence in code-review comments.
-- Never mark a spec ready merely because every template heading contains text.
-
-## Anti-patterns
-
-- Implementation plans written before validating the problem.
-- Generic architecture detached from the repository.
-- Feature lists without non-goals, priorities, or pass conditions.
-- Existing artifacts rewritten without provenance or change rationale.
-- Vague quality adjectives and fabricated targets.
-- Happy-path-only flows.
-- Tests defined after implementation to approve whatever was built.
-- One agent inventing intent, implementation, and acceptance without review.
-- Frozen specs that are neither maintained nor explicitly superseded.
-
-## References
-
-- Read the [artifact transformation guide](references/artifact-transformation.md) when adapting existing material.
-- Read the [full specification template](references/spec-template.md) for a full specification.
-- Read the [review checklist](references/review-checklist.md) for readiness reviews.
-- Read the [mini-spec example](references/mini-spec-example.md) for a compact worked example.
-- Read the [source basis](references/source-basis.md) for the standards and evidence behind the workflow.
+- A technology named in a rough proposal is often a hypothesis, not a requirement.
+- A diagram arrow without a label has direction at most; it does not prove protocol, data, ownership, trust, or timing.
+- Existing tests prove current behavior, not necessarily desired behavior.
+- A feature flag is not a rollback plan unless the old path remains safe and data stays compatible.
+- Passing tests cannot rescue a requirement that encodes the wrong interpretation.
+- More sections and longer task lists can reduce readiness by hiding unresolved decisions.
+- Parallel-agent plans fail when multiple slices own the same schema, migration, contract, or generated file.
+- Implementation discoveries must update or explicitly supersede the spec; divergence should not remain hidden in code comments.

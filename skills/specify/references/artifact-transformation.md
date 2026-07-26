@@ -7,7 +7,7 @@ Use this process for existing specifications, PRDs, RFCs, ADRs, tickets, plans, 
 1. Keep the original artifact unchanged unless the user explicitly requests in-place editing.
 2. Record each source by path, URL, title, date, revision, or other stable identifier.
 3. Separate explicit source statements from your interpretation.
-4. Preserve accepted product intent and decisions unless they conflict with stronger evidence, another accepted decision, or safety.
+4. Correct factual claims when stronger evidence disproves them. Supersede an accepted requirement, constraint, policy, or decision only through its governing source or acceptance authority; current implementation behavior alone has no such authority.
 5. Surface contradictions rather than choosing an answer without authority.
 
 ## Build a conversion map
@@ -30,6 +30,7 @@ Use the map to prevent accidental loss and to make rewrites auditable. A short m
 - Turn implied exclusions into explicit non-goals only when the source supports them; otherwise mark them as proposed.
 - Preserve fixed compatibility or policy obligations verbatim where wording is authoritative.
 - Record accepted decisions in or link them to ADRs rather than burying them in prose.
+- Mark every material obligation added during review as **derived/proposed**, record the risk or evidence that motivates it, and name the authority required to accept it. Do not present reviewer-added safeguards as already accepted source intent.
 
 ## Handle visual artifacts
 

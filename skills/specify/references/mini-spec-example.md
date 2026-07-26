@@ -1,6 +1,12 @@
 # Worked Mini-Spec Example
 
-Use this example to resist template gravity. It demonstrates a rigorous **not-ready** response when the request is solution-first and lacks evidence. Adapt the reasoning; do not copy caching-specific requirements into unrelated work.
+Use this example to resist template gravity. It demonstrates a rigorous **not-ready** response when the request is solution-first and lacks evidence. Adapt the reasoning and compactness; do not copy caching-specific requirements into unrelated work.
+
+## Contents
+
+- Input
+- Output
+- Why this remains compact
 
 ## Input
 
@@ -10,7 +16,8 @@ Use this example to resist template gravity. It demonstrates a rigorous **not-re
 
 # Dashboard response-time improvement
 
-**Status:** Not ready — product measurements and repository evidence are unresolved.
+**Artifact status:** Draft
+**Implementation readiness:** Not ready — product measurements, acceptance decisions, and repository evidence are unresolved.
 **Decision owner / acceptance authority:** `[BLOCKING: product owner for freshness and performance; technical owner after repository inspection]`
 
 ## Decision summary
@@ -91,15 +98,13 @@ Exact paths and commands remain **blocking until repository inspection**.
 - **Delegated:** Profile the implementation and compare options using repository evidence.
 - **Delegated:** Identify existing feature-control, telemetry, and test conventions.
 
-## Implementation slices
+## Readiness-resolution work
 
-Do not authorise implementation. After blockers resolve:
+These tasks gather evidence; they do not authorize product implementation:
 
-1. **TASK-MEASURE:** Establish repository-grounded baseline and bottleneck evidence.
-2. **TASK-DECIDE:** Compare options and record the selected design.
-3. **TASK-CONTRACT:** Add correctness, isolation, freshness, and degraded-behaviour tests.
-4. **TASK-IMPLEMENT:** Implement the selected option behind established control.
-5. **TASK-VALIDATE:** Exercise rollout and rollback using the approved measurement method.
+1. **RESOLVE-MEASURE:** Inspect and profile the repository. **Evidence target:** reproducible baseline and identified bottleneck. **Decision rule:** do not compare solutions until the affected path and dominant cost are supported by evidence.
+2. **RESOLVE-ACCEPT:** Obtain owner decisions for the affected journey, workload, performance target, freshness, degraded behavior, and rollback data policy. **Evidence target:** accepted decisions with named authority. **Decision rule:** any missing gating decision keeps implementation Not ready.
+3. **RESOLVE-DESIGN:** Compare credible options using measured evidence and record the selected design, repository paths, test commands, and operating owner. **Evidence target:** accepted design and verification plan. **Decision rule:** emit implementation slices only after the selected scope passes the readiness review.
 
 ## Why this example is small but rigorous
 
