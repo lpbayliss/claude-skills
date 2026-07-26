@@ -2,7 +2,7 @@
 name: specify
 description: Creates, reviews, repairs, and transforms software specifications into decision-ready, implementation-ready contracts. Use when the user needs a spec, RFC, PRD, technical design, implementation plan, scoped issue contract, architecture or migration proposal, or wants rough notes, tickets, diagrams, screenshots, or an existing document made ready for humans or coding agents. Also use when asked to plan, scope, formalize, critique, or assess readiness before non-trivial software work. Do not use for straightforward coding, debugging, or explanation when no specification, planning, or design decision is needed.
 license: MIT
-compatibility: Designed for Claude Code and compatible Agent Skills clients; repository-aware work requires file and search tools.
+compatibility: Designed for Claude Code and compatible Agent Skills clients; repository work requires file/search tools, and visual artifacts require image inspection or supplied extraction.
 metadata:
   author: lpbayliss
   version: "1.1.0"
