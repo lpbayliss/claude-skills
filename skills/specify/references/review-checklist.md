@@ -21,6 +21,7 @@ Use this as a risk-based review, not a form-filling exercise. Score `0 absent`, 
 - [ ] Mandatory requirements have objective verification and pass conditions.
 - [ ] The set is consistent, prioritised, non-duplicative, and complete for the current decision.
 - [ ] Normative MUST/SHOULD/MAY terms are used consistently if adopted.
+- [ ] A partial supersession changes only the named claim; adjacent timing, sequencing, threshold, and safety constraints remain intact unless authority explicitly changes them. Activity timing and result/approval timing are not collapsed into a stronger or weaker gate.
 
 ## Behaviour and boundaries
 

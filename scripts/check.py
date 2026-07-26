@@ -146,6 +146,14 @@ try:
             target = SKILL / relative
             if not target.is_file():
                 fail(f"eval {item.get('id')} references missing file: {relative}")
+    roll_forward_case = next((item for item in cases if item.get("kind") == "update-roll-forward"), None)
+    roll_forward_contract = " ".join(
+        [roll_forward_case.get("expected_output", ""), *roll_forward_case.get("assertions", [])]
+    ) if roll_forward_case else ""
+    if "before rotation begins" not in roll_forward_contract:
+        fail("roll-forward eval must preserve the accepted pre-rotation rehearsal timing")
+    if "does not require passing before rotation begins" not in roll_forward_contract:
+        fail("roll-forward eval must keep activity timing separate from pass-result timing")
 except (json.JSONDecodeError, AttributeError):
     pass
 

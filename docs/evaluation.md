@@ -45,11 +45,13 @@ Five positive and boundary cases were then run in fresh contexts against the rep
 | Accepted repository issue contract | 6/6 | 298 | `Ready` for an exact low-risk code/test scope |
 | Conditional implementation scope | 6/6 | 339 | Coding may start; a post-implementation smoke result still gates release |
 | Accepted greenfield bootstrap | 6/6 | 460 | User-authorized future paths are not reported as observed files |
-| Accepted roll-forward update | 6/6 | 731 | Artifact remains Accepted while revocation is separately `Not ready` pending evidence |
+| Accepted roll-forward update | 6/6 | 698 | Artifact remains Accepted while revocation is separately `Not ready` pending evidence |
 | Bounded architecture spike | 6/6 | 740 | `Ready` for evidence gathering and `Not ready` for product implementation |
-| **Overall** | **30/30** | **2,568** | Five distinct readiness boundaries |
+| **Overall** | **30/30** | **2,535** | Five distinct readiness boundaries |
 
-Independent graders passed all 30 assertions. Across the four scored compact/boundary outputs, readiness semantics and non-fabrication averaged 5.0/5; proportionality averaged 4.5/5. The roll-forward update received a separate six-assertion pass.
+Independent graders passed all 30 assertions. Across the four scored compact/boundary outputs, readiness semantics and non-fabrication averaged 5.0/5; proportionality averaged 4.5/5.
+
+Late full-source grading overrode the initial compact key-rotation grade. The first output weakened an accepted safety constraint from “perform before rotation” to “pass before revocation”; the first repair then overstrengthened it to “pass before rotation.” Both scored 5/6 and are excluded from the table. The skill and eval now keep activity timing separate from result-gate timing. The clean replacement run preserved “perform before rotation,” retained “pass before revocation,” and is the result reported above.
 
 ## Limitations
 
