@@ -1,0 +1,18 @@
+{
+  "name": "software-specification",
+  "description": "Create, review, and transform implementation-ready software specifications.",
+  "author": {
+    "name": "Luke Bayliss",
+    "url": "https://github.com/lpbayliss"
+  },
+  "homepage": "https://github.com/lpbayliss/claude-software-specification",
+  "repository": "https://github.com/lpbayliss/claude-software-specification",
+  "license": "MIT",
+  "keywords": [
+    "specification",
+    "requirements",
+    "design-doc",
+    "rfc",
+    "agentic-development"
+  ]
+}

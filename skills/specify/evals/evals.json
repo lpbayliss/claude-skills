@@ -1,0 +1,29 @@
+{
+  "skill_name": "specify",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We need passkey login in this existing TypeScript app. Inspect the repository and write an implementation-ready spec. Password login must continue during migration. Cover recovery, security, rollout, rollback, and test evidence. Do not implement.",
+      "expected_output": "A repository-grounded specification with evidence, goals and non-goals, stable requirements, threat and recovery scenarios, alternatives, rollout and rollback, traceable verification, blockers, and agent-sized implementation slices.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Turn docs/rough-payment-redesign.md and the architecture diagram in docs/payment-flow.png into a stronger spec. Preserve accepted product intent, show what came from each source, and do not guess what unlabeled arrows mean.",
+      "expected_output": "A transformed specification with source provenance, explicit visual ambiguities, a conversion summary, testable requirements, contradictions and owner decisions, and no invented diagram semantics.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Review this proposal and tell me whether it is ready: Add Redis so the dashboard is fast. Cache results for a while. Ship behind a flag and test it. Return a corrected mini-spec without inventing targets.",
+      "expected_output": "A Not ready verdict, challenge to solution-first framing, explicit missing latency and freshness decisions, measurable placeholders, credible alternatives, verification structure, and no fabricated values.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Create a greenfield webhook delivery service spec for parallel agent implementation. It needs retries and at-least-once delivery, but we have not selected a language or cloud.",
+      "expected_output": "A greenfield spec separating fixed delivery semantics from open technology choices, defining idempotency and failure invariants, unresolved SLO targets, operational safety, and conflict-aware implementation slices.",
+      "files": []
+    }
+  ]
+}
