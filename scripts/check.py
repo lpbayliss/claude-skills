@@ -105,6 +105,17 @@ for reference in (SKILL / "references").glob("*.md"):
     if len(reference_text.splitlines()) > 100 and "## Contents" not in reference_text:
         fail(f"reference over 100 lines needs a Contents section: {reference.relative_to(ROOT)}")
 
+for markdown in ROOT.rglob("*.md"):
+    if ".git" in markdown.parts or "dist" in markdown.parts:
+        continue
+    markdown_text = read(markdown)
+    for target in re.findall(r"(?<!!)\[[^\]]*\]\(([^)]+)\)", markdown_text):
+        relative = target.split("#", 1)[0]
+        if not relative or "://" in relative or relative.startswith("mailto:"):
+            continue
+        if not (markdown.parent / relative).resolve().exists():
+            fail(f"broken relative link in {markdown.relative_to(ROOT)}: {target}")
+
 try:
     evals = json.loads(read(SKILL / "evals" / "evals.json"))
     cases = evals.get("evals", [])
