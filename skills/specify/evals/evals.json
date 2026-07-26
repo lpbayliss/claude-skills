@@ -18,7 +18,7 @@
         "Passkey enrollment, authentication, recovery, credential lifecycle, and downgrade or fallback risks are addressed or marked unresolved",
         "Consequential requirements have observable pass conditions rather than vague completion language",
         "Unknown product or security targets are blocking or delegated rather than fabricated",
-        "The verdict does not claim Ready while required acceptance authority or threat review is unresolved"
+        "Artifact status is separate from a Not ready implementation verdict while acceptance authority or threat review remains unresolved"
       ]
     },
     {
@@ -41,7 +41,7 @@
     {
       "id": 3,
       "prompt": "Review this proposal and return a corrected mini-spec without inventing targets: Add Redis so the dashboard is fast. Cache results for a while. Ship behind a flag and test it.",
-      "expected_output": "A proportionate Not ready mini-spec that treats Redis as a candidate, identifies missing latency and freshness decisions, compares credible options, and defines evidence and rollback without fabricated values.",
+      "expected_output": "A proportionate Not ready mini-spec that treats Redis as a candidate, identifies missing latency and freshness decisions, compares credible options, and defines planned verification and recovery without fabricated values.",
       "files": [],
       "assertions": [
         "The output leads with Not ready and lists concrete blockers",
@@ -55,15 +55,15 @@
     {
       "id": 4,
       "prompt": "Create a greenfield specification for a webhook delivery service suitable for later parallel-agent implementation. It needs retries and at-least-once delivery, but no language, cloud, SLO, retention period, or retry limit has been selected.",
-      "expected_output": "A technology-neutral specification defining delivery semantics and safety invariants, separating fixed behavior from open technology choices, preserving unresolved targets, and decomposing only independent work.",
+      "expected_output": "A technology-neutral specification defining delivery semantics and safety invariants, separating fixed behavior from open technology choices, preserving unresolved targets, and emitting readiness-resolution work rather than premature code slices.",
       "files": [],
       "assertions": [
         "At-least-once is defined without claiming exactly-once recipient processing and duplicate delivery is addressed",
         "Durable acceptance, idempotency or stable delivery identity, retry classification, and crash recovery are specified or explicitly blocked",
         "Language, cloud, storage, queue, SLO, retention, and retry limits remain open or blocking rather than invented",
         "Outbound security risks such as signing, secret handling, SSRF or egress control, and tenant isolation are addressed proportionately",
-        "Implementation slices identify dependencies and keep shared contracts or schemas under one owner",
-        "The verdict remains Draft or Not ready while product and security decisions require approval"
+        "Unresolved prerequisites produce bounded readiness-resolution work with evidence targets or decision rules; implementation slices are omitted or explicitly gated",
+        "Artifact status is Draft or Proposed while implementation readiness is separately Not ready pending product and security approval"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "The output does not silently select, average, or reinterpret a retention period",
         "The blocked decision names the raw-data retention and de-identification boundary and an accountable product/security authority",
         "Account deletion, sensitive-query content, and aggregate data treatment are covered or marked unresolved",
-        "The verdict is Not ready or Draft pending the conflict resolution",
+        "Artifact status remains Draft or Proposed and implementation readiness is separately Not ready pending conflict resolution",
         "The mini-spec is no more than 1800 words"
       ]
     },
@@ -91,12 +91,95 @@
         "evals/files/review/notifications-rfc.md"
       ],
       "assertions": [
-        "The output leads with exactly one readiness verdict",
-        "Findings are prioritized by impact and cite the supplied RFC rather than inventing repository evidence",
+        "The output leads with exactly one implementation-readiness verdict",
+        "Findings are prioritized by impact and cite stable headings or line ranges from the supplied RFC rather than inventing repository evidence",
         "Kafka is identified as an unsupported mechanism unless a requirement or constraint justifies it",
-        "Missing delivery guarantees, retry classification, idempotency, ordering, failure handling, SLO evidence, rollout signals, and rollback are identified proportionately",
+        "Missing delivery guarantees, retry classification, idempotency, ordering, failure handling, SLO evidence, rollout signals, and rollback or recovery are identified proportionately",
         "The output does not rewrite the RFC or produce implementation slices",
         "The review is no more than 1200 words"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Use the supplied theme-repo fixture. Product and engineering have accepted this exact scope: add `system` to `Theme`; change `resolveTheme` to accept `prefersDark: boolean | undefined`; explicit light/dark selections remain unchanged; system resolves to dark only when prefersDark is true and otherwise light. No persistence, UI, deployment, or other files are in scope. Write the smallest implementation-ready issue contract; do not implement.",
+      "expected_output": "A compact Accepted and Ready issue contract grounded in the two exact source/test files and npm test, with objective behavior and no irrelevant architecture, rollout, or risk dossier.",
+      "files": [
+        "evals/files/theme-repo/CLAUDE.md",
+        "evals/files/theme-repo/package.json",
+        "evals/files/theme-repo/src/theme.ts",
+        "evals/files/theme-repo/tests/theme.test.ts"
+      ],
+      "assertions": [
+        "Artifact status is Accepted and implementation readiness is Ready for the exact theme-resolution scope",
+        "The contract cites src/theme.ts, tests/theme.test.ts, and npm test without inventing other repository paths",
+        "The accepted light, dark, system, true, false, and undefined behavior is objectively testable",
+        "At least one implementation slice maps the code change and tests to the requirement and verification command",
+        "No blocker is invented and irrelevant rollout, migration, persistence, security, or operations sections are omitted",
+        "The issue contract is no more than 700 words"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Use the supplied theme-repo fixture and the same accepted `system` theme behavior: add `system` to `Theme`; `resolveTheme(selected, prefersDark)` keeps explicit themes, returns dark for system only when prefersDark is true, and otherwise light. Assess readiness specifically for coding and tests in the two supplied files. A manual browser smoke result cannot exist until after implementation and gates release, but it does not gate starting code; no product, design, or specialist approval is missing. Return a compact issue contract, not code.",
+      "expected_output": "A compact contract that is Conditionally ready for implementation of the named files, clearly separates the later release gate, and does not mistake a planned post-implementation result for missing pre-code evidence.",
+      "files": [
+        "evals/files/theme-repo/CLAUDE.md",
+        "evals/files/theme-repo/package.json",
+        "evals/files/theme-repo/src/theme.ts",
+        "evals/files/theme-repo/tests/theme.test.ts"
+      ],
+      "assertions": [
+        "Artifact status and implementation readiness are separate",
+        "The verdict is Conditionally ready for coding/tests in the named files and explicitly not a Ready verdict for release",
+        "The manual browser smoke is classified as a post-implementation release gate rather than missing pre-implementation evidence",
+        "No missing owner, product decision, or approval is fabricated",
+        "Exact files and npm test are used for the implementation slice and planned verification",
+        "The issue contract is no more than 700 words"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Create the smallest issue contract for an accepted greenfield bootstrap scope in an empty repository. The accepted decisions are Node.js 22, TypeScript, pnpm, `src/server.ts`, `tests/health.test.ts`, and `pnpm test`. Scope is only a local server whose `GET /health` returns HTTP 200 with exactly `{\"status\":\"ok\"}`; it listens on localhost using a caller-supplied port. No deployment, authentication, persistence, or additional endpoint is in scope. Do not implement.",
+      "expected_output": "An Accepted and Ready greenfield bootstrap issue contract that uses user-authorized future paths without pretending they already exist and stays proportionate to the low-risk scope.",
+      "files": [],
+      "assertions": [
+        "Artifact status is Accepted and implementation readiness is Ready only for the named bootstrap scope",
+        "The output distinguishes accepted future paths from observed existing repository files",
+        "The health response, localhost binding, caller-supplied port, and exclusions have objective pass conditions",
+        "pnpm test and the accepted test path are used without inventing deployment or production checks",
+        "A small implementation slice is permitted and no unrelated architecture dossier is added",
+        "The issue contract is no more than 700 words"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Update the supplied accepted key-rotation specification using the accepted implementation discovery. Preserve the original authority, explicitly supersede only the invalid failure-handling claim, and produce a concise change summary. Do not invent a reversible rollback after key revocation.",
+      "expected_output": "An updated accepted specification that distinguishes pre-revocation pause/re-enable from post-revocation roll-forward recovery, names the point of no return and gates, and records the superseded claim with provenance.",
+      "files": [
+        "evals/files/key-rotation/accepted-spec.md",
+        "evals/files/key-rotation/implementation-note.md"
+      ],
+      "assertions": [
+        "The accepted artifact status and named security/data-platform authority are preserved",
+        "The original always-reactivate rollback claim is explicitly marked superseded by the accepted implementation discovery",
+        "Pre-revocation pause or re-enable is distinguished from post-revocation roll-forward recovery",
+        "Revocation is the point of no return and restore rehearsal plus reconciliation gate it",
+        "No fictional key undelete or rollback after revocation is invented",
+        "The change summary attributes preserved, corrected, superseded, and unresolved content to the supplied sources"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "We lack evidence to choose Kafka or a database outbox for order events. Write a spike brief, not an implementation plan. The spike may inspect the repository, measure current transaction boundaries and throughput, and prototype throwaway failure recovery. It must end with evidence and a decision rule; product implementation is not authorized.",
+      "expected_output": "A compact spike brief that is Ready for bounded evidence gathering but Not ready for product implementation, with hypotheses, measurements, stop conditions, and no production code slices.",
+      "files": [],
+      "assertions": [
+        "Artifact status is explicit and readiness is scoped separately: Ready for the spike while Not ready for product implementation",
+        "Kafka and outbox remain hypotheses rather than requirements",
+        "The spike defines repository inspection, measurements, failure experiments, evidence targets, and a decision rule",
+        "The work is bounded by owner or stop conditions and does not invent numeric thresholds",
+        "No production implementation slices or accepted architecture are emitted",
+        "The spike brief is no more than 1000 words"
       ]
     }
   ]

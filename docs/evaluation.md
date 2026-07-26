@@ -41,4 +41,4 @@ Both descriptions covered all intended specification tasks. The v1.0.0 descripti
 - The trigger test used an independent blind evaluator rather than the Claude host classifier because the local Claude CLI OAuth session had expired.
 - Human preference still matters for how much implementation scaffolding a team wants in a not-ready mini-spec.
 
-The repository retains six output-quality cases, 36 assertions, 20 trigger cases, and deterministic schema/path checks so later iterations can broaden the sample and measure variance.
+The repository retains eleven output-quality cases, 66 assertions, 20 trigger cases, and deterministic schema/path checks so later iterations can broaden the executed sample and measure variance.

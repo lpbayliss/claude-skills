@@ -121,8 +121,8 @@ try:
     evals = json.loads(read(SKILL / "evals" / "evals.json"))
     cases = evals.get("evals", [])
     ids = [item.get("id") for item in cases]
-    if len(ids) < 6 or len(ids) != len(set(ids)):
-        fail("evals must contain at least six uniquely identified cases")
+    if len(ids) < 10 or len(ids) != len(set(ids)):
+        fail("evals must contain at least ten uniquely identified cases")
     for item in cases:
         if not item.get("prompt") or not item.get("expected_output"):
             fail(f"eval {item.get('id')} needs prompt and expected_output")
