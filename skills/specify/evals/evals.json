@@ -3,27 +3,101 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "We need passkey login in this existing TypeScript app. Inspect the repository and write an implementation-ready spec. Password login must continue during migration. Cover recovery, security, rollout, rollback, and test evidence. Do not implement.",
-      "expected_output": "A repository-grounded specification with evidence, goals and non-goals, stable requirements, threat and recovery scenarios, alternatives, rollout and rollback, traceable verification, blockers, and agent-sized implementation slices.",
-      "files": []
+      "prompt": "Use the supplied passkey-repo fixture as the available repository evidence. Write an implementation-ready specification for adding passkey login while password login continues during migration. Do not implement and do not invent product targets or files beyond the fixture.",
+      "expected_output": "A repository-grounded specification that cites real fixture paths, preserves password login, separates unresolved product/security decisions from technical latitude, defines migration and recovery behavior, and refuses readiness where acceptance evidence is missing.",
+      "files": [
+        "evals/files/passkey-repo/CLAUDE.md",
+        "evals/files/passkey-repo/package.json",
+        "evals/files/passkey-repo/src/auth/session.ts",
+        "evals/files/passkey-repo/src/auth/password.ts",
+        "evals/files/passkey-repo/tests/auth/password-login.test.ts"
+      ],
+      "assertions": [
+        "The output cites at least three supplied repository paths and does not claim nonexistent repository paths as facts",
+        "Password login remains an explicit migration constraint and has regression evidence",
+        "Passkey enrollment, authentication, recovery, credential lifecycle, and downgrade or fallback risks are addressed or marked unresolved",
+        "Consequential requirements have observable pass conditions rather than vague completion language",
+        "Unknown product or security targets are blocking or delegated rather than fabricated",
+        "The verdict does not claim Ready while required acceptance authority or threat review is unresolved"
+      ]
     },
     {
       "id": 2,
-      "prompt": "Turn docs/rough-payment-redesign.md and the architecture diagram in docs/payment-flow.png into a stronger spec. Preserve accepted product intent, show what came from each source, and do not guess what unlabeled arrows mean.",
-      "expected_output": "A transformed specification with source provenance, explicit visual ambiguities, a conversion summary, testable requirements, contradictions and owner decisions, and no invented diagram semantics.",
-      "files": []
+      "prompt": "Transform the supplied payment redesign notes and payment-flow.svg into a corrected mini-spec. Preserve accepted product intent, identify what comes from each source, and do not guess what any unlabeled arrow means.",
+      "expected_output": "A compact transformed specification with source provenance, explicit visual ambiguities, measurable placeholders, a change summary, and no invented diagram semantics.",
+      "files": [
+        "evals/files/payments/rough-payment-redesign.md",
+        "evals/files/payments/payment-flow.svg"
+      ],
+      "assertions": [
+        "The output distinguishes claims from the notes from observations or uncertainties from the SVG",
+        "Guest checkout and delayed-confirmation recovery are preserved as accepted intent",
+        "Unlabeled arrows are not assigned protocols, payloads, timing, ownership, or trust semantics",
+        "The source transformation summary states what was preserved, corrected or reclassified, and left unresolved",
+        "Missing latency and retry targets remain explicit blockers or delegated measurements",
+        "The mini-spec is no more than 1800 words unless it explains a specific material reason for exceeding that ceiling"
+      ]
     },
     {
       "id": 3,
-      "prompt": "Review this proposal and tell me whether it is ready: Add Redis so the dashboard is fast. Cache results for a while. Ship behind a flag and test it. Return a corrected mini-spec without inventing targets.",
-      "expected_output": "A Not ready verdict, challenge to solution-first framing, explicit missing latency and freshness decisions, measurable placeholders, credible alternatives, verification structure, and no fabricated values.",
-      "files": []
+      "prompt": "Review this proposal and return a corrected mini-spec without inventing targets: Add Redis so the dashboard is fast. Cache results for a while. Ship behind a flag and test it.",
+      "expected_output": "A proportionate Not ready mini-spec that treats Redis as a candidate, identifies missing latency and freshness decisions, compares credible options, and defines evidence and rollback without fabricated values.",
+      "files": [],
+      "assertions": [
+        "The output leads with Not ready and lists concrete blockers",
+        "Redis is treated as a candidate design rather than a fixed requirement",
+        "Latency, workload, freshness, invalidation, authorization isolation, and degraded behavior are measurable or explicitly unresolved",
+        "At least two credible non-Redis alternatives or the status quo are considered without strawman framing",
+        "Feature disablement is distinguished from complete rollback and data behavior is considered",
+        "The corrected mini-spec is no more than 1800 words"
+      ]
     },
     {
       "id": 4,
-      "prompt": "Create a greenfield webhook delivery service spec for parallel agent implementation. It needs retries and at-least-once delivery, but we have not selected a language or cloud.",
-      "expected_output": "A greenfield spec separating fixed delivery semantics from open technology choices, defining idempotency and failure invariants, unresolved SLO targets, operational safety, and conflict-aware implementation slices.",
-      "files": []
+      "prompt": "Create a greenfield specification for a webhook delivery service suitable for later parallel-agent implementation. It needs retries and at-least-once delivery, but no language, cloud, SLO, retention period, or retry limit has been selected.",
+      "expected_output": "A technology-neutral specification defining delivery semantics and safety invariants, separating fixed behavior from open technology choices, preserving unresolved targets, and decomposing only independent work.",
+      "files": [],
+      "assertions": [
+        "At-least-once is defined without claiming exactly-once recipient processing and duplicate delivery is addressed",
+        "Durable acceptance, idempotency or stable delivery identity, retry classification, and crash recovery are specified or explicitly blocked",
+        "Language, cloud, storage, queue, SLO, retention, and retry limits remain open or blocking rather than invented",
+        "Outbound security risks such as signing, secret handling, SSRF or egress control, and tenant isolation are addressed proportionately",
+        "Implementation slices identify dependencies and keep shared contracts or schemas under one owner",
+        "The verdict remains Draft or Not ready while product and security decisions require approval"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Turn the supplied search analytics product brief and security review into one decision-ready mini-spec. Do not resolve their retention conflict yourself. Identify exactly what decision is blocked and who must resolve it.",
+      "expected_output": "A source-grounded mini-spec that preserves both positions, exposes the 90-day versus 7-day raw-retention conflict, identifies acceptance authority, and avoids implementing around an unresolved privacy decision.",
+      "files": [
+        "evals/files/search/product-brief.md",
+        "evals/files/search/security-review.md"
+      ],
+      "assertions": [
+        "The 90-day product request and 7-day security limit are both attributed to their sources",
+        "The output does not silently select, average, or reinterpret a retention period",
+        "The blocked decision names the raw-data retention and de-identification boundary and an accountable product/security authority",
+        "Account deletion, sensitive-query content, and aggregate data treatment are covered or marked unresolved",
+        "The verdict is Not ready or Draft pending the conflict resolution",
+        "The mini-spec is no more than 1800 words"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Review the supplied Notifications RFC for implementation readiness. I only want a concise verdict and prioritized findings; do not rewrite the RFC.",
+      "expected_output": "A concise review report that challenges solution-first Kafka framing, identifies missing delivery semantics and operational contracts, cites the source, and does not expand into a replacement specification.",
+      "files": [
+        "evals/files/review/notifications-rfc.md"
+      ],
+      "assertions": [
+        "The output leads with exactly one readiness verdict",
+        "Findings are prioritized by impact and cite the supplied RFC rather than inventing repository evidence",
+        "Kafka is identified as an unsupported mechanism unless a requirement or constraint justifies it",
+        "Missing delivery guarantees, retry classification, idempotency, ordering, failure handling, SLO evidence, rollout signals, and rollback are identified proportionately",
+        "The output does not rewrite the RFC or produce implementation slices",
+        "The review is no more than 1200 words"
+      ]
     }
   ]
 }
