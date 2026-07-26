@@ -148,7 +148,7 @@ For high-impact security, privacy, distributed-system, data-governance, migratio
 - Omit irrelevant headings. If a selected template requires a considered risk area, use `None — [reason]` rather than filler.
 - Preserve the original artifact unless the user explicitly requests in-place editing.
 - For Transform, summarize what was preserved, corrected, reclassified, removed, conflicted, and left unresolved.
-- For Review, prioritize findings by impact and cite exact source sections; do not rewrite the whole document unless asked.
+- For Review, prioritize findings by impact and cite exact source headings or stable line ranges when available; do not rewrite the whole document unless asked.
 - Mark unknowns as **Blocking**, **Delegated**, or **Deferred**. Never turn a blocking product decision into an implementation assumption.
 - Maintain traceability from need → requirement → decision → task → evidence without repeating the same prose in every section.
 
