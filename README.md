@@ -89,8 +89,9 @@ Turn this architecture diagram, ticket set, and rough notes into a coherent mini
 ```text
 .claude-plugin/                 Claude marketplace and plugin metadata
 skills/specify/SKILL.md         Main workflow
-skills/specify/references/      Templates, review criteria, examples, source basis
-skills/specify/evals/           Realistic skill evaluation prompts
+skills/specify/references/      Conditional workflow detail, templates, review criteria, examples
+skills/specify/evals/           Output-quality and trigger evaluation cases
+docs/                           Skill-design research and specification evidence basis
 scripts/check.py                Dependency-free repository checks
 scripts/package_skill.py        Builds dist/specify.skill
 ```
@@ -117,8 +118,12 @@ The packaged `dist/specify.skill` is a zip-compatible Agent Skill archive for cl
 - Separate facts, requirements, constraints, decisions, assumptions, risks, and open questions.
 - Do not fabricate repository paths, metrics, targets, architecture, or approvals.
 - Give consequential requirements stable IDs and objective pass conditions.
+- Use the smallest sufficient artifact; added length must resolve a material decision or risk.
 - Treat security, privacy, migration, public interfaces, destructive changes, and rollback as explicit decision boundaries.
+- Validate drafts against the readiness checklist, repair them, and only then issue a verdict.
 - Do not mark a spec ready while implementation still requires inventing product behaviour.
+
+The evidence behind the skill design is documented in [docs/skill-design-research.md](docs/skill-design-research.md). The engineering sources behind the specification workflow are documented in [docs/specification-workflow-basis.md](docs/specification-workflow-basis.md).
 
 ## License
 

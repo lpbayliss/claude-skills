@@ -1,6 +1,14 @@
 # Full Software Specification Template
 
-Delete sections that genuinely add no value, but write `None — [reason]` for risk areas deliberately considered and found irrelevant.
+Use this only for work that warrants a full specification. Delete sections that add no decision or verification value. For a mandatory risk category that was considered and found irrelevant, write `None — [reason]`.
+
+## Contents
+
+- Metadata and decision summary
+- Context, goals, and requirements
+- System behavior, interfaces, data, and design
+- Security, operations, verification, rollout, and rollback
+- Open questions, implementation slices, and change history
 
 ````markdown
 ---

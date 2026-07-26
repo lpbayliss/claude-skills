@@ -1,6 +1,12 @@
 # Worked Mini-Spec Example
 
-Use this example to resist template gravity. It demonstrates a rigorous **not-ready** response when the request is solution-first and lacks evidence. Adapt the reasoning; do not copy caching-specific requirements into unrelated work.
+Use this example to resist template gravity. It demonstrates a rigorous **not-ready** response when the request is solution-first and lacks evidence. Adapt the reasoning and compactness; do not copy caching-specific requirements into unrelated work.
+
+## Contents
+
+- Input
+- Output
+- Why this remains compact
 
 ## Input
 
