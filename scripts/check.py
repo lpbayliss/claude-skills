@@ -143,8 +143,8 @@ for skill in skill_dirs:
 plugin = load_json(ROOT / ".claude-plugin" / "plugin.json")
 marketplace = load_json(ROOT / ".claude-plugin" / "marketplace.json")
 if isinstance(plugin, dict):
-    if plugin.get("name") != "software-specification":
-        fail("legacy plugin name must remain software-specification until a migration is released")
+    if plugin.get("name") != "lpbayliss":
+        fail("plugin namespace must be lpbayliss")
     if not plugin.get("version"):
         fail("plugin manifest needs an explicit version")
 if isinstance(marketplace, dict):

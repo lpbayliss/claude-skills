@@ -11,7 +11,7 @@ Creates, reviews, repairs, and transforms software specifications into decision-
 Use it for specs, RFCs, PRDs, technical designs, scoped issue contracts, migrations, readiness reviews, and transforming rough artifacts into testable requirements.
 
 ```text
-/software-specification:specify docs/proposal.md
+/lpbayliss:specify docs/proposal.md
 ```
 
 ### `metrics`
@@ -21,10 +21,10 @@ Identifies, defines, implements, and verifies trustworthy software, product, del
 Use it to decide what to measure, audit misleading metrics, add repository instrumentation, design metric contracts, or verify dashboards and alerts without inventing targets or creating unsafe cardinality.
 
 ```text
-/software-specification:metrics Add retry-safe worker outcome and latency metrics to this repository.
+/lpbayliss:metrics Add retry-safe worker outcome and latency metrics to this repository.
 ```
 
-The plugin namespace remains `software-specification` for compatibility with existing installations. The repository and plugin content are now general-purpose; a future namespace/repository rename should be handled as an explicit migration rather than silently breaking installed commands.
+The plugin namespace is `lpbayliss`, giving every skill a stable owner-scoped command such as `/lpbayliss:metrics`. This intentionally replaces the earlier `software-specification` namespace.
 
 ## Install in Claude Code
 
@@ -33,16 +33,16 @@ The plugin namespace remains `software-specification` for compatibility with exi
 Run inside Claude Code:
 
 ```text
-/plugin marketplace add lpbayliss/claude-software-specification
-/plugin install software-specification@lpbayliss-skills
+/plugin marketplace add lpbayliss/claude-skills
+/plugin install lpbayliss@lpbayliss-skills
 /reload-plugins
 ```
 
 Or from a shell:
 
 ```bash
-claude plugin marketplace add lpbayliss/claude-software-specification
-claude plugin install software-specification@lpbayliss-skills
+claude plugin marketplace add lpbayliss/claude-skills
+claude plugin install lpbayliss@lpbayliss-skills
 ```
 
 Claude can select a skill automatically from its description or you can invoke a namespaced skill directly.
@@ -50,10 +50,10 @@ Claude can select a skill automatically from its description or you can invoke a
 ### Install individual personal skills
 
 ```bash
-git clone https://github.com/lpbayliss/claude-software-specification.git
+git clone https://github.com/lpbayliss/claude-skills.git
 mkdir -p ~/.claude/skills
-ln -s "$(pwd)/claude-software-specification/skills/specify" ~/.claude/skills/specify
-ln -s "$(pwd)/claude-software-specification/skills/metrics" ~/.claude/skills/metrics
+ln -s "$(pwd)/claude-skills/skills/specify" ~/.claude/skills/specify
+ln -s "$(pwd)/claude-skills/skills/metrics" ~/.claude/skills/metrics
 ```
 
 Copy instead of symlinking if preferred. Standalone personal skills are invoked as `/specify` and `/metrics`.
