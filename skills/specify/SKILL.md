@@ -60,7 +60,7 @@ Do not substitute one axis for the other. An accepted decision can remain not re
 - For a **full, high-risk, migration, or multi-agent specification**, read the [detailed workflow](references/specification-workflow.md).
 - Use the [full template](references/spec-template.md) only for a full spec or when the user requests that structure.
 - Read the [mini-spec example](references/mini-spec-example.md) only to calibrate a compact, evidence-poor output.
-- For workflow provenance or a deeper domain-source audit, consult the [public specification evidence note](https://github.com/lpbayliss/claude-software-specification/blob/main/docs/specification-workflow-basis.md); it is not required for normal execution.
+- For workflow provenance or a deeper domain-source audit, consult the [public specification evidence note](https://github.com/lpbayliss/claude-skills/blob/main/docs/specification-workflow-basis.md); it is not required for normal execution.
 
 Keep references one level deep. Do not load every reference by default.
 

@@ -1,74 +1,73 @@
-# Claude Software Specification
+# LPBayliss Claude Skills
 
-A portable [Agent Skill](https://agentskills.io/) for creating, reviewing, and transforming software specifications into decision-ready, implementation-ready contracts.
+A versioned Claude Code plugin and portable [Agent Skills](https://agentskills.io/) collection for software engineering work.
 
-It supports:
+## Skills
 
-- new specifications from ideas, requirements, issues, or repository context;
-- critical review and repair of existing specs, RFCs, PRDs, ADRs, plans, diagrams, and design notes;
-- conversion of rough or solution-first material into testable requirements;
-- repository-grounded implementation slices for human or agentic development;
-- explicit readiness verdicts, blockers, evidence, verification, rollout, and rollback.
+### `specify`
 
-The workflow is intentionally specification-first:
+Creates, reviews, repairs, and transforms software specifications into decision-ready, implementation-ready contracts.
+
+Use it for specs, RFCs, PRDs, technical designs, scoped issue contracts, migrations, readiness reviews, and transforming rough artifacts into testable requirements.
 
 ```text
-problem evidence → goals/non-goals → requirements → design decisions →
-verification → rollout/operations → implementation slices
+/lpbayliss:specify docs/proposal.md
 ```
+
+### `metrics`
+
+Identifies, defines, implements, and verifies trustworthy software, product, delivery, reliability, experiment, and AI-system metrics.
+
+Use it to decide what to measure, audit misleading metrics, add repository instrumentation, design metric contracts, or verify dashboards and alerts without inventing targets or creating unsafe cardinality.
+
+```text
+/lpbayliss:metrics Add retry-safe worker outcome and latency metrics to this repository.
+```
+
+The plugin namespace is `lpbayliss`, giving every skill a stable owner-scoped command such as `/lpbayliss:metrics`. This intentionally replaces the earlier `software-specification` namespace.
 
 ## Install in Claude Code
 
-### Recommended: plugin marketplace
+### Plugin marketplace
 
-Run these commands inside Claude Code:
+Run inside Claude Code:
 
 ```text
-/plugin marketplace add lpbayliss/claude-software-specification
-/plugin install software-specification@lpbayliss-skills
+/plugin marketplace add lpbayliss/claude-skills
+/plugin install lpbayliss@lpbayliss-skills
 /reload-plugins
 ```
 
-Or install non-interactively from a shell:
+Or from a shell:
 
 ```bash
-claude plugin marketplace add lpbayliss/claude-software-specification
-claude plugin install software-specification@lpbayliss-skills
+claude plugin marketplace add lpbayliss/claude-skills
+claude plugin install lpbayliss@lpbayliss-skills
 ```
 
-Claude can then select the skill automatically, or you can invoke it directly:
+Claude can select a skill automatically from its description or you can invoke a namespaced skill directly.
 
-```text
-/software-specification:specify
-/software-specification:specify docs/proposal.md
-```
-
-### Personal skill
+### Install individual personal skills
 
 ```bash
-git clone https://github.com/lpbayliss/claude-software-specification.git
+git clone https://github.com/lpbayliss/claude-skills.git
 mkdir -p ~/.claude/skills
-ln -s "$(pwd)/claude-software-specification/skills/specify" ~/.claude/skills/specify
+ln -s "$(pwd)/claude-skills/skills/specify" ~/.claude/skills/specify
+ln -s "$(pwd)/claude-skills/skills/metrics" ~/.claude/skills/metrics
 ```
 
-Copy instead of symlinking if preferred:
+Copy instead of symlinking if preferred. Standalone personal skills are invoked as `/specify` and `/metrics`.
 
-```bash
-cp -R claude-software-specification/skills/specify ~/.claude/skills/specify
-```
+### Install a project skill
 
-Invoke it as `/specify`.
-
-### Project skill
-
-From an existing project root:
+From a project root:
 
 ```bash
 mkdir -p .claude/skills
-cp -R /path/to/claude-software-specification/skills/specify .claude/skills/specify
+cp -R /path/to/this-repo/skills/metrics .claude/skills/metrics
 ```
 
-Commit `.claude/skills/specify/` if the workflow should travel with the project. Claude cloud sessions can load committed project skills.
+Commit the skill directory if the workflow should travel with the project.
 
 ## Example requests
 
@@ -77,56 +76,74 @@ Create an implementation-ready specification for passkey login. Inspect this rep
 ```
 
 ```text
-Review docs/payments-redesign.md. Preserve accepted product intent, identify unsupported claims and blockers, then produce a corrected spec suitable for parallel agent implementation.
+Review docs/payments-redesign.md. Preserve accepted intent, identify blockers, and produce a corrected spec suitable for parallel implementation.
 ```
 
 ```text
-Turn this architecture diagram, ticket set, and rough notes into a coherent mini-spec. Mark interpretations that need owner confirmation rather than guessing.
+We are adding recurring reminders. Identify the smallest outcome, driver, and guardrail metric set, then add the instrumentation and tests using this repository's existing analytics stack.
+```
+
+```text
+Audit weekly_active_user from source event through warehouse query and dashboard. Fix semantic drift, cardinality, and tests; do not invent a target.
 ```
 
 ## Repository structure
 
 ```text
-.claude-plugin/                 Claude marketplace and plugin metadata
-skills/specify/SKILL.md         Main workflow
-skills/specify/references/      Conditional workflow detail, templates, review criteria, examples
-skills/specify/evals/           Output-quality and trigger evaluation cases
-docs/                           Skill-design research and specification evidence basis
-scripts/check.py                Dependency-free repository checks
-scripts/package_skill.py        Builds dist/specify.skill
+.claude-plugin/                 Marketplace and plugin metadata
+skills/specify/                 Software specification skill, references, and evals
+skills/metrics/                 Metrics skill, references, fixtures, and evals
+docs/                           Design evidence and evaluation notes
+scripts/check.py                Dependency-free multi-skill repository checks
+scripts/package_skill.py        Builds each .skill archive and the complete plugin zip
+dist/                           Generated archives
 ```
+
+Each skill is independently portable. The repository root is the multi-skill Claude Code plugin.
 
 ## Validate and package
 
 ```bash
 python3 scripts/check.py
 python3 scripts/package_skill.py
+for archive in dist/*.skill dist/*.zip; do python3 -m zipfile -t "$archive"; done
 ```
 
 When Claude Code is installed:
 
 ```bash
 claude plugin validate .
+claude --plugin-dir .
 ```
 
-The packaged `dist/specify.skill` is a zip-compatible Agent Skill archive for clients that accept skill uploads. A prebuilt archive is available from the [latest GitHub release](https://github.com/lpbayliss/claude-software-specification/releases/latest/download/specify.skill). Claude.ai and Cowork installations are account-scoped; upload that archive through **Customize → Skills** rather than expecting local `~/.claude/skills/` to sync.
+Expected archives:
 
-## Design principles
+- `dist/specify.skill`
+- `dist/metrics.skill`
+- `dist/lpbayliss-skills.zip`
 
-- Inspect the source of truth before proposing repository-specific design.
-- Preserve product intent while challenging premature mechanisms.
-- Separate facts, requirements, constraints, decisions, assumptions, risks, and open questions.
-- Do not fabricate repository paths, metrics, targets, architecture, or approvals.
-- Separate artifact lifecycle from implementation readiness; scope every readiness verdict.
-- Give consequential requirements stable IDs and objective pass conditions.
-- Distinguish pre-implementation evidence, planned verification, and observed post-implementation results.
-- Separate readiness-resolution work from authorized implementation slices.
-- Use the smallest sufficient artifact; added length must resolve a material decision or risk.
-- Treat security, privacy, migration, public interfaces, destructive changes, and rollback or roll-forward recovery as explicit decision boundaries.
-- Validate drafts against the readiness checklist, repair them, and only then issue a verdict.
-- Do not mark a spec ready while implementation still requires inventing product behaviour.
+`.skill` files are for clients that accept individual skill uploads. The plugin zip contains the complete collection for local plugin loading.
 
-The evidence behind the skill design is documented in [docs/skill-design-research.md](docs/skill-design-research.md). The engineering sources behind the specification workflow are documented in [docs/specification-workflow-basis.md](docs/specification-workflow-basis.md). Blind old-versus-new results and limitations are documented in [docs/evaluation.md](docs/evaluation.md).
+## Skill quality rules
+
+- Use precise trigger descriptions with realistic positive and difficult negative trigger evals.
+- Keep the core workflow under 500 lines and load deeper references conditionally.
+- Inspect source evidence before making repository-specific claims.
+- Do not fabricate product decisions, targets, paths, commands, approvals, or observed results.
+- Scale output and implementation to the decision and risk.
+- Pair semantic review with deterministic checks for package shape, links, eval schemas, and fixtures.
+- Keep each skill independently installable and testable.
+- Implement requested work and verify it with real execution rather than stopping at advice.
+
+Evidence for the authoring approach is in [docs/skill-design-research.md](docs/skill-design-research.md). Specification sources are in [docs/specification-workflow-basis.md](docs/specification-workflow-basis.md). Metrics sources are in [docs/metrics-design-basis.md](docs/metrics-design-basis.md). Specify evaluation results are in [docs/evaluation.md](docs/evaluation.md).
+
+## Adding another skill
+
+1. Create `skills/<name>/SKILL.md` with matching `name` frontmatter and a trigger-focused description.
+2. Put optional depth in `references/`, deterministic helpers in `scripts/`, and realistic inputs in `evals/files/`.
+3. Add at least three output evals to `evals/evals.json` and 20 balanced trigger cases to `evals/trigger-evals.json`.
+4. Update this README and plugin metadata keywords when the new domain changes discovery.
+5. Run repository checks, package all artifacts, validate the plugin, and exercise representative skill prompts before release.
 
 ## License
 
