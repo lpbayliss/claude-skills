@@ -18,4 +18,7 @@ jobs:
           python-version: "3.12"
       - run: python3 scripts/check.py
       - run: python3 scripts/package_skill.py
-      - run: python3 -m zipfile -t dist/specify.skill
+      - run: |
+          for archive in dist/*.skill dist/*.zip; do
+            python3 -m zipfile -t "$archive"
+          done

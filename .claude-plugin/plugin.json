@@ -1,6 +1,7 @@
 {
   "name": "software-specification",
-  "description": "Create, review, repair, and transform decision-ready software specifications.",
+  "version": "2.0.0",
+  "description": "Reusable software engineering skills for specification and trustworthy metrics.",
   "author": {
     "name": "Luke Bayliss",
     "url": "https://github.com/lpbayliss"
@@ -9,10 +10,11 @@
   "repository": "https://github.com/lpbayliss/claude-software-specification",
   "license": "MIT",
   "keywords": [
+    "skills",
+    "software-engineering",
     "specification",
-    "requirements",
-    "design-doc",
-    "rfc",
-    "agentic-development"
+    "metrics",
+    "observability",
+    "product-analytics"
   ]
 }
