@@ -9,7 +9,7 @@
     {
       "name": "lpbayliss",
       "source": "./",
-      "description": "Reusable software engineering skills for specification and trustworthy metrics.",
+      "description": "Reusable software engineering skills for specification, trustworthy metrics, and presentation planning.",
       "homepage": "https://github.com/lpbayliss/claude-skills",
       "repository": "https://github.com/lpbayliss/claude-skills",
       "license": "MIT",
@@ -19,6 +19,9 @@
         "specification",
         "metrics",
         "observability",
+        "presentations",
+        "storytelling",
+        "technical-communication",
         "planning"
       ]
     }

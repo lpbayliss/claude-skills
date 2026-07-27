@@ -1,0 +1,22 @@
+[
+  {"query":"I have to present our caching redesign to the architecture council next Thursday. Read the RFC, work out the argument and trade-offs, then give me a timed slide-by-slide content brief and likely Q&A. Don't make the PowerPoint yet.","should_trigger":true},
+  {"query":"turn this 18-page research paper into a 12 minute conference talk for a mixed controls and industry audience. I need the story, what evidence to show, what to cut, and speaker intent.","should_trigger":true},
+  {"query":"Our all-hands deck is technically accurate but completely flat. Rebuild the narrative so people understand why the operating model is changing and what they need to do afterward.","should_trigger":true},
+  {"query":"Help me plan a pitch to the investment committee. They know the business problem but not the architecture; I need funding for phase two without hiding the migration risk.","should_trigger":true},
+  {"query":"Review presentation-outline.md and tell me why the story doesn't land. Then repair the sequence, titles, evidence, opening and ending. Content only.","should_trigger":true},
+  {"query":"I need two versions of this technical talk: a 10-minute executive briefing and a 30-minute engineering deep dive. Show exactly how audience, evidence and ask change.","should_trigger":true},
+  {"query":"plan a 45 min training presentation on incident hypothesis testing, including a worked example, audience practice and how I'll know they learned it","should_trigger":true},
+  {"query":"Create the narrative and production brief for a 7-minute live product demo. Include what the speaker says, what appears on screen, transitions and a fallback if the API fails.","should_trigger":true},
+  {"query":"Before you generate the slides, develop the governing idea, audience change, story spine, claim/evidence map and beat plan for this keynote.","should_trigger":true},
+  {"query":"This board presentation claims our AI pilot improved productivity from one month of PR counts. Make the argument intellectually honest and tell us what rollout decision the evidence supports.","should_trigger":true},
+  {"query":"Take this approved slide-by-slide production brief and create the actual branded PowerPoint file. Do not change wording, order, story, or speaker notes.","should_trigger":false},
+  {"query":"Fix the font embedding and broken image links in quarterly-review.pptx without changing any presentation content.","should_trigger":false},
+  {"query":"Design a visual theme for our existing deck: colours, type scale, background motifs and slide masters. The narrative is already approved.","should_trigger":false},
+  {"query":"Extract all text and speaker notes from this PowerPoint into markdown, preserving slide order exactly.","should_trigger":false},
+  {"query":"Coach me through stage fright and breathing before tomorrow's talk. I do not need help with content or structure.","should_trigger":false},
+  {"query":"Write a six-page technical RFC for this migration. It will be read asynchronously and no presentation is planned.","should_trigger":false},
+  {"query":"Summarise the board meeting transcript and list decisions, actions and owners. Nobody is presenting it.","should_trigger":false},
+  {"query":"Create a 90-second social media video script announcing the feature. It isn't part of a live talk or slide presentation.","should_trigger":false},
+  {"query":"Generate three chart images from the supplied CSV using the exact titles and chart types in the design spec.","should_trigger":false},
+  {"query":"Proofread the final keynote transcript for grammar only. The argument and structure are locked and must not change.","should_trigger":false}
+]

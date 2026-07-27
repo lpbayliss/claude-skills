@@ -1,7 +1,7 @@
 {
   "name": "lpbayliss",
-  "version": "2.0.0",
-  "description": "Reusable software engineering skills for specification and trustworthy metrics.",
+  "version": "2.1.0",
+  "description": "Reusable software engineering skills for specification, trustworthy metrics, and presentation planning.",
   "author": {
     "name": "Luke Bayliss",
     "url": "https://github.com/lpbayliss"
@@ -15,6 +15,9 @@
     "specification",
     "metrics",
     "observability",
-    "product-analytics"
+    "product-analytics",
+    "presentations",
+    "storytelling",
+    "technical-communication"
   ]
 }
