@@ -69,6 +69,23 @@ ln -s "$(pwd)/claude-skills/skills/presentation-planning" ~/.claude/skills/prese
 
 Copy instead of symlinking if preferred. Standalone personal skills are invoked as `/specify`, `/metrics`, and `/presentation-planning`.
 
+### Upload an individual skill to Claude Desktop or Claude.ai
+
+Build the archives:
+
+```bash
+python3 scripts/package_skill.py
+python3 scripts/check_packages.py
+```
+
+Then upload one of:
+
+- `dist/specify.zip`
+- `dist/metrics.zip`
+- `dist/presentation-planning.zip`
+
+In Claude, open **Customize → Skills**, click **+ → Create skill → Upload a skill**, select the ZIP, then enable it. Code execution and file creation must be enabled. Each ZIP contains the required top-level `<skill-name>/` folder.
+
 ### Install a project skill
 
 From a project root:
@@ -115,7 +132,8 @@ skills/metrics/                 Metrics skill, references, fixtures, and evals
 skills/presentation-planning/   Presentation content/story skill, references, fixtures, and evals
 docs/                           Design evidence and evaluation notes
 scripts/check.py                Dependency-free multi-skill repository checks
-scripts/package_skill.py        Builds each .skill archive and the complete plugin zip
+scripts/check_packages.py       Verifies generated archive set, layout, and parity
+scripts/package_skill.py        Builds each .skill/.zip archive and the complete plugin zip
 dist/                           Generated archives
 ```
 
@@ -126,6 +144,7 @@ Each skill is independently portable. The repository root is the multi-skill Cla
 ```bash
 python3 scripts/check.py
 python3 scripts/package_skill.py
+python3 scripts/check_packages.py
 for archive in dist/*.skill dist/*.zip; do python3 -m zipfile -t "$archive"; done
 ```
 
@@ -139,11 +158,14 @@ claude --plugin-dir .
 Expected archives:
 
 - `dist/specify.skill`
+- `dist/specify.zip`
 - `dist/metrics.skill`
+- `dist/metrics.zip`
 - `dist/presentation-planning.skill`
+- `dist/presentation-planning.zip`
 - `dist/lpbayliss-skills.zip`
 
-`.skill` files are for clients that accept individual skill uploads. The plugin zip contains the complete collection for local plugin loading.
+Each individual `.skill` and `.zip` pair contains the same top-level `<skill-name>/` directory. Use the `.zip` files for manual upload through Claude Desktop or Claude.ai. The plugin zip contains the complete collection for local plugin loading. Successful GitHub Actions runs publish all seven files in the `lpbayliss-skill-bundles` artifact.
 
 ## Skill quality rules
 

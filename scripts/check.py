@@ -58,6 +58,7 @@ required_root = [
     ROOT / "docs" / "presentation-planning-basis.md",
     ROOT / "docs" / "evaluation.md",
     ROOT / "scripts" / "package_skill.py",
+    ROOT / "scripts" / "check_packages.py",
 ]
 for path in required_root:
     read(path)
