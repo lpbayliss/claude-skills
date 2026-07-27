@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build deterministic archives for every skill and the complete Claude plugin."""
+"""Build deterministic .skill/.zip archives for every skill and the complete plugin."""
 from __future__ import annotations
 
 import zipfile
@@ -18,8 +18,8 @@ def add_file(archive: zipfile.ZipFile, path: Path, relative: Path) -> None:
     archive.writestr(info, path.read_bytes())
 
 
-def build_skill(source: Path) -> Path:
-    output = DIST / f"{source.name}.skill"
+def build_skill(source: Path, extension: str) -> Path:
+    output = DIST / f"{source.name}{extension}"
     with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         for path in sorted(source.rglob("*")):
             if path.is_file() and not {"__pycache__", "node_modules"}.intersection(path.parts):
@@ -47,7 +47,8 @@ for stale in DIST.glob("*.skill"):
 for stale in DIST.glob("*.zip"):
     stale.unlink()
 
-outputs = [build_skill(path) for path in sorted(SKILLS.iterdir()) if (path / "SKILL.md").is_file()]
+skill_sources = [path for path in sorted(SKILLS.iterdir()) if (path / "SKILL.md").is_file()]
+outputs = [build_skill(path, extension) for path in skill_sources for extension in (".skill", ".zip")]
 outputs.append(build_plugin())
 for output in outputs:
     print(output)

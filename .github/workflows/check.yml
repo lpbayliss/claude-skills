@@ -18,7 +18,15 @@ jobs:
           python-version: "3.12"
       - run: python3 scripts/check.py
       - run: python3 scripts/package_skill.py
+      - run: python3 scripts/check_packages.py
       - run: |
           for archive in dist/*.skill dist/*.zip; do
             python3 -m zipfile -t "$archive"
           done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lpbayliss-skill-bundles
+          path: |
+            dist/*.skill
+            dist/*.zip
+          if-no-files-found: error
