@@ -24,6 +24,16 @@ Use it to decide what to measure, audit misleading metrics, add repository instr
 /lpbayliss:metrics Add retry-safe worker outcome and latency metrics to this repository.
 ```
 
+### `presentation-planning`
+
+Plans and writes the underlying content for presentations before physical slide production.
+
+Use it for audience strategy, governing idea, narrative architecture, technical claim/evidence flow, timed beat plans, speaker intent, visual direction, Q&A, rehearsal, and production briefs for executive, technical, research, pitch, training, keynote, and demo presentations.
+
+```text
+/lpbayliss:presentation-planning Turn this architecture RFC into a 12-minute decision presentation for the review board. Plan content only.
+```
+
 The plugin namespace is `lpbayliss`, giving every skill a stable owner-scoped command such as `/lpbayliss:metrics`. This intentionally replaces the earlier `software-specification` namespace.
 
 ## Install in Claude Code
@@ -54,9 +64,10 @@ git clone https://github.com/lpbayliss/claude-skills.git
 mkdir -p ~/.claude/skills
 ln -s "$(pwd)/claude-skills/skills/specify" ~/.claude/skills/specify
 ln -s "$(pwd)/claude-skills/skills/metrics" ~/.claude/skills/metrics
+ln -s "$(pwd)/claude-skills/skills/presentation-planning" ~/.claude/skills/presentation-planning
 ```
 
-Copy instead of symlinking if preferred. Standalone personal skills are invoked as `/specify` and `/metrics`.
+Copy instead of symlinking if preferred. Standalone personal skills are invoked as `/specify`, `/metrics`, and `/presentation-planning`.
 
 ### Install a project skill
 
@@ -87,12 +98,21 @@ We are adding recurring reminders. Identify the smallest outcome, driver, and gu
 Audit weekly_active_user from source event through warehouse query and dashboard. Fix semantic drift, cardinality, and tests; do not invent a target.
 ```
 
+```text
+Turn this research paper into a 12-minute conference presentation for a mixed technical audience. Develop the governing idea, story, evidence, speaker content, visual intent, timing, and likely Q&A; do not build the deck yet.
+```
+
+```text
+Review this executive presentation outline, identify why the argument does not land, then produce a repaired production brief with an explicit decision and honest treatment of risk.
+```
+
 ## Repository structure
 
 ```text
 .claude-plugin/                 Marketplace and plugin metadata
 skills/specify/                 Software specification skill, references, and evals
 skills/metrics/                 Metrics skill, references, fixtures, and evals
+skills/presentation-planning/   Presentation content/story skill, references, fixtures, and evals
 docs/                           Design evidence and evaluation notes
 scripts/check.py                Dependency-free multi-skill repository checks
 scripts/package_skill.py        Builds each .skill archive and the complete plugin zip
@@ -120,6 +140,7 @@ Expected archives:
 
 - `dist/specify.skill`
 - `dist/metrics.skill`
+- `dist/presentation-planning.skill`
 - `dist/lpbayliss-skills.zip`
 
 `.skill` files are for clients that accept individual skill uploads. The plugin zip contains the complete collection for local plugin loading.
@@ -135,7 +156,7 @@ Expected archives:
 - Keep each skill independently installable and testable.
 - Implement requested work and verify it with real execution rather than stopping at advice.
 
-Evidence for the authoring approach is in [docs/skill-design-research.md](docs/skill-design-research.md). Specification sources are in [docs/specification-workflow-basis.md](docs/specification-workflow-basis.md). Metrics sources are in [docs/metrics-design-basis.md](docs/metrics-design-basis.md). Specify evaluation results are in [docs/evaluation.md](docs/evaluation.md).
+Evidence for the authoring approach is in [docs/skill-design-research.md](docs/skill-design-research.md). Specification sources are in [docs/specification-workflow-basis.md](docs/specification-workflow-basis.md). Metrics sources are in [docs/metrics-design-basis.md](docs/metrics-design-basis.md). Presentation sources are in [docs/presentation-planning-basis.md](docs/presentation-planning-basis.md). Specify evaluation results are in [docs/evaluation.md](docs/evaluation.md).
 
 ## Adding another skill
 

@@ -55,6 +55,7 @@ required_root = [
     ROOT / "docs" / "skill-design-research.md",
     ROOT / "docs" / "specification-workflow-basis.md",
     ROOT / "docs" / "metrics-design-basis.md",
+    ROOT / "docs" / "presentation-planning-basis.md",
     ROOT / "docs" / "evaluation.md",
     ROOT / "scripts" / "package_skill.py",
 ]
