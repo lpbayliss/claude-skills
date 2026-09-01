@@ -32,13 +32,15 @@ Or browse everything interactively with `/plugin`.
 | `postgres-best-practices` | PostgreSQL | [neondatabase/postgres-skills](https://github.com/neondatabase/postgres-skills) | Neon (official, vendor-agnostic) |
 | `prisma` | Prisma ORM | [prisma/skills](https://github.com/prisma/skills) | Prisma (official) |
 | `drizzle-best-practices` | Drizzle ORM | [honra-io/drizzle-best-practices](https://github.com/honra-io/drizzle-best-practices) | Honra (community, early-stage) |
+| `frontend-design` | UI/UX design quality | [anthropics/claude-plugins-public](https://github.com/anthropics/claude-plugins-public) | Anthropic (official) |
+| `mobbin-mcp` | Design reference (MCP) | Local wrapper for [Mobbin's official MCP](https://mobbin.com/mcp) | Mobbin (official server; OAuth, paid plans) |
 
 ## Alternatives worth knowing
 
 - **PostgreSQL via Supabase** — [supabase/agent-skills](https://github.com/supabase/agent-skills) is a popular official marketplace with a `supabase-postgres-best-practices` skill; add it directly if you use Supabase. Neon's was chosen here for being explicitly vendor-agnostic.
 - **SQLite via Turso** — [tursodatabase/agent-skills](https://github.com/tursodatabase/agent-skills) is official but Turso-flavored (their SQLite-compatible platform), not vanilla SQLite.
 - **Docker MCP Toolkit** — [docker/claude-plugins](https://github.com/docker/claude-plugins) is Docker Inc's official marketplace, but it only covers Docker Desktop's MCP Toolkit integration, not Dockerfile/Compose authoring.
-- **Anthropic official marketplaces** — [anthropics/skills](https://github.com/anthropics/skills) (document/creative skills) and the plugins bundled with [anthropics/claude-code](https://github.com/anthropics/claude-code) (e.g. `frontend-design`, `pr-review-toolkit`) are worth adding separately; nothing there overlaps this list.
+- **Anthropic official marketplaces** — [anthropics/skills](https://github.com/anthropics/skills) (document/creative skills) and the [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official) marketplace (e.g. `pr-review-toolkit`) are worth adding separately; `frontend-design` is already referenced here.
 
 ## Gaps
 

@@ -1,0 +1,9 @@
+{
+  "name": "mobbin-mcp",
+  "description": "Connects Mobbin's official MCP server for searching real app screens, flows, and UI patterns as design references.",
+  "author": {
+    "name": "Luke Bayliss",
+    "url": "https://github.com/lpbayliss"
+  },
+  "homepage": "https://mobbin.com/mcp"
+}

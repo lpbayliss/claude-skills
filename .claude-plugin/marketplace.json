@@ -130,6 +130,27 @@
       "license": "MIT"
     },
     {
+      "name": "frontend-design",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-public.git",
+        "path": "plugins/frontend-design"
+      },
+      "description": "Anthropic's official frontend design plugin: distinctive, production-grade UI that avoids generic AI aesthetics.",
+      "category": "frontend",
+      "keywords": ["design", "ui", "ux", "frontend"],
+      "repository": "https://github.com/anthropics/claude-plugins-public",
+      "license": "MIT"
+    },
+    {
+      "name": "mobbin-mcp",
+      "source": "./plugins/mobbin-mcp",
+      "description": "Mobbin's official MCP server (OAuth, paid plans): search real app screens, flows, and UI patterns for design reference.",
+      "category": "frontend",
+      "keywords": ["mobbin", "design", "mcp", "inspiration"],
+      "homepage": "https://mobbin.com/mcp"
+    },
+    {
       "name": "drizzle-best-practices",
       "source": {
         "source": "github",
