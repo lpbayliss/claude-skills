@@ -1,0 +1,11 @@
+[
+  { "query": "Write a hook that blocks Claude from editing anything under migrations/", "should_trigger": true },
+  { "query": "Add a PostToolUse hook that runs prettier after every file edit", "should_trigger": true },
+  { "query": "My PreToolUse hook fires but never actually blocks the tool call — debug it", "should_trigger": true },
+  { "query": "What matcher do I need so a hook only runs for Bash commands?", "should_trigger": true },
+  { "query": "Set up a desktop notification when Claude finishes responding", "should_trigger": true },
+  { "query": "Create a skill for reviewing database migrations", "should_trigger": false },
+  { "query": "Write a git pre-commit hook that runs the linter", "should_trigger": false },
+  { "query": "Add an MCP server for our internal API to my config", "should_trigger": false },
+  { "query": "Allow npm commands without permission prompts", "should_trigger": false }
+]

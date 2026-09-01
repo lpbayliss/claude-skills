@@ -34,7 +34,7 @@ Or browse everything interactively with `/plugin`.
 | `drizzle-best-practices` | Drizzle ORM | [honra-io/drizzle-best-practices](https://github.com/honra-io/drizzle-best-practices) | Honra (community, early-stage) |
 | `frontend-design` | UI/UX design quality | [anthropics/claude-plugins-public](https://github.com/anthropics/claude-plugins-public) | Anthropic (official) |
 | `skill-creator` | Authoring new skills | [anthropics/skills](https://github.com/anthropics/skills) | Anthropic (official) |
-| `lpbayliss` | My own skills (`create-skill`, more to come) | Local (`plugins/lpbayliss`) | Me |
+| `lpbayliss` | My own skills (`create-skill`, `create-hook`) | Local (`plugins/lpbayliss`) | Me |
 | `mobbin-mcp` | Design reference (MCP) | Local wrapper for [Mobbin's official MCP](https://mobbin.com/mcp) | Mobbin (official server; OAuth, paid plans) |
 
 ## Alternatives worth knowing

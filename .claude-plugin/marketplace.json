@@ -158,7 +158,7 @@
     {
       "name": "lpbayliss",
       "source": "./plugins/lpbayliss",
-      "description": "Luke's own skills, starting with create-skill for house-style skill authoring.",
+      "description": "Luke's own skills: house-style skill authoring (create-skill) and Claude Code hook authoring (create-hook).",
       "category": "tooling",
       "keywords": ["skills", "authoring", "house-style"],
       "license": "MIT"
