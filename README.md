@@ -33,6 +33,7 @@ Or browse everything interactively with `/plugin`.
 | `prisma` | Prisma ORM | [prisma/skills](https://github.com/prisma/skills) | Prisma (official) |
 | `drizzle-best-practices` | Drizzle ORM | [honra-io/drizzle-best-practices](https://github.com/honra-io/drizzle-best-practices) | Honra (community, early-stage) |
 | `frontend-design` | UI/UX design quality | [anthropics/claude-plugins-public](https://github.com/anthropics/claude-plugins-public) | Anthropic (official) |
+| `skill-creator` | Authoring new skills | [anthropics/skills](https://github.com/anthropics/skills) | Anthropic (official) |
 | `mobbin-mcp` | Design reference (MCP) | Local wrapper for [Mobbin's official MCP](https://mobbin.com/mcp) | Mobbin (official server; OAuth, paid plans) |
 
 ## Alternatives worth knowing

@@ -143,6 +143,19 @@
       "license": "MIT"
     },
     {
+      "name": "skill-creator",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/skills.git",
+        "path": "skills/skill-creator"
+      },
+      "description": "Anthropic's official skill for authoring new Claude skills: structure, frontmatter, references, and packaging.",
+      "category": "tooling",
+      "keywords": ["skills", "authoring", "meta"],
+      "repository": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0"
+    },
+    {
       "name": "mobbin-mcp",
       "source": "./plugins/mobbin-mcp",
       "description": "Mobbin's official MCP server (OAuth, paid plans): search real app screens, flows, and UI patterns for design reference.",
