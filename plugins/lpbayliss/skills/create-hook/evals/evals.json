@@ -1,0 +1,44 @@
+{
+  "skill_name": "create-hook",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "guardrail-hook",
+      "prompt": "I use Claude Code on Windows, macOS, and Linux. Write a hook that blocks any edit to files named .env or .env.*, plus the settings.json configuration to install it.",
+      "expected_output": "An exec-form Node or Python stdlib hook using the current hookSpecificOutput schema, portable across all three platforms.",
+      "assertions": [
+        "Uses exec form (command plus args) rather than a shell-form one-liner",
+        "Script uses only Node or Python stdlib — no jq, grep, or bash-isms",
+        "Handles both forward-slash and backslash paths",
+        "Blocks via hookSpecificOutput.permissionDecision deny (or exit code 2), not outdated fields like continue/stopReason",
+        "References the script via ${CLAUDE_PROJECT_DIR}, not a relative path",
+        "Matcher is scoped to the file-editing tools, not *"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "kind": "debugging",
+      "prompt": "My hook runs (I see it in --debug output) but tool calls are never blocked. The script prints {\"continue\": false, \"stopReason\": \"blocked\"} and exits 0. Why doesn't it block?",
+      "expected_output": "Identifies the outdated output schema as the cause and rewrites to the current decision schema or exit code 2.",
+      "assertions": [
+        "Identifies that continue/stopReason is not the current output schema and is ignored",
+        "Provides the correct hookSpecificOutput decision shape or exit-code-2 alternative",
+        "Notes that invalid JSON output fails open (action proceeds)"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "kind": "scoping",
+      "prompt": "I want a hook that posts every Bash command Claude runs to our audit webhook, without slowing Claude down.",
+      "expected_output": "An async hook (or http handler) scoped to the Bash matcher that does not block the loop.",
+      "assertions": [
+        "Uses async true (or the http handler type) so the network call does not block",
+        "Scopes the matcher to Bash rather than all tools",
+        "Keeps the hook to a single small handler with no extra machinery"
+      ],
+      "files": []
+    }
+  ]
+}

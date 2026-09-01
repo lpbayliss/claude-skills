@@ -4,26 +4,184 @@
     "name": "Luke Bayliss",
     "url": "https://github.com/lpbayliss"
   },
-  "description": "Claude skills maintained by Luke Bayliss.",
+  "description": "A curated marketplace of Claude Code skills and plugins for tools Luke uses regularly, referencing upstream maintainers where possible.",
   "plugins": [
     {
+      "name": "react-best-practices",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/vercel-labs/agent-skills.git",
+        "path": "skills/react-best-practices"
+      },
+      "description": "React and Next.js performance and correctness guidelines from Vercel's engineering team.",
+      "category": "frontend",
+      "keywords": ["react", "nextjs", "performance"],
+      "repository": "https://github.com/vercel-labs/agent-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "vite",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/antfu/skills.git",
+        "path": "skills/vite"
+      },
+      "description": "Vite usage and configuration skill derived from official docs, maintained by Vite core team member Anthony Fu.",
+      "category": "frontend",
+      "keywords": ["vite", "build-tools"],
+      "repository": "https://github.com/antfu/skills",
+      "license": "MIT"
+    },
+    {
+      "name": "vitest",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/antfu/skills.git",
+        "path": "skills/vitest"
+      },
+      "description": "Vitest testing skill derived from official docs, maintained by Vitest team lead Anthony Fu.",
+      "category": "testing",
+      "keywords": ["vitest", "testing"],
+      "repository": "https://github.com/antfu/skills",
+      "license": "MIT"
+    },
+    {
+      "name": "pnpm",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/antfu/skills.git",
+        "path": "skills/pnpm"
+      },
+      "description": "pnpm workspace and package management skill derived from official docs.",
+      "category": "tooling",
+      "keywords": ["pnpm", "package-manager", "monorepo"],
+      "repository": "https://github.com/antfu/skills",
+      "license": "MIT"
+    },
+    {
+      "name": "tailwind-css",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/PaulRBerg/agent-skills.git",
+        "path": "skills/tailwind-css"
+      },
+      "description": "Tailwind CSS conventions and utility-first patterns.",
+      "category": "frontend",
+      "keywords": ["tailwind", "css"],
+      "repository": "https://github.com/PaulRBerg/agent-skills",
+      "license": "MIT"
+    },
+    {
+      "name": "javascript-typescript",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/wshobson/agents.git",
+        "path": "plugins/javascript-typescript"
+      },
+      "description": "TypeScript and modern JavaScript development plugin (agents, skills, commands) by Seth Hobson.",
+      "category": "languages",
+      "keywords": ["typescript", "javascript"],
+      "repository": "https://github.com/wshobson/agents",
+      "license": "MIT"
+    },
+    {
+      "name": "cicd-automation",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/wshobson/agents.git",
+        "path": "plugins/cicd-automation"
+      },
+      "description": "CI/CD plugin covering GitHub Actions workflow templates, deployment pipeline design, and secrets management.",
+      "category": "devops",
+      "keywords": ["github-actions", "ci", "cd", "workflows"],
+      "repository": "https://github.com/wshobson/agents",
+      "license": "MIT"
+    },
+    {
+      "name": "postgres-best-practices",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/neondatabase/postgres-skills.git",
+        "path": "skills/postgres-best-practices"
+      },
+      "description": "Vendor-agnostic PostgreSQL best practices maintained by Neon with PostgreSQL core team involvement.",
+      "category": "database",
+      "keywords": ["postgres", "postgresql", "sql"],
+      "repository": "https://github.com/neondatabase/postgres-skills",
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "prisma",
+      "source": {
+        "source": "github",
+        "repo": "prisma/skills"
+      },
+      "skills": [
+        "./prisma-database-setup/",
+        "./prisma-client-api/",
+        "./prisma-cli/",
+        "./prisma-postgres/"
+      ],
+      "strict": false,
+      "description": "Official Prisma ORM skills: database setup, Client API usage, CLI workflows, and Prisma Postgres.",
+      "category": "database",
+      "keywords": ["prisma", "orm", "postgres"],
+      "repository": "https://github.com/prisma/skills",
+      "license": "MIT"
+    },
+    {
+      "name": "frontend-design",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-public.git",
+        "path": "plugins/frontend-design"
+      },
+      "description": "Anthropic's official frontend design plugin: distinctive, production-grade UI that avoids generic AI aesthetics.",
+      "category": "frontend",
+      "keywords": ["design", "ui", "ux", "frontend"],
+      "repository": "https://github.com/anthropics/claude-plugins-public",
+      "license": "MIT"
+    },
+    {
+      "name": "skill-creator",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/skills.git",
+        "path": "skills/skill-creator"
+      },
+      "description": "Anthropic's official skill for authoring new Claude skills: structure, frontmatter, references, and packaging.",
+      "category": "tooling",
+      "keywords": ["skills", "authoring", "meta"],
+      "repository": "https://github.com/anthropics/skills",
+      "license": "Apache-2.0"
+    },
+    {
       "name": "lpbayliss",
-      "source": "./",
-      "description": "Reusable software engineering skills for specification, trustworthy metrics, and presentation planning.",
-      "homepage": "https://github.com/lpbayliss/claude-skills",
-      "repository": "https://github.com/lpbayliss/claude-skills",
-      "license": "MIT",
-      "category": "development",
-      "tags": [
-        "skills",
-        "specification",
-        "metrics",
-        "observability",
-        "presentations",
-        "storytelling",
-        "technical-communication",
-        "planning"
-      ]
+      "source": "./plugins/lpbayliss",
+      "description": "Luke's own skills: house-style skill authoring (create-skill) and Claude Code hook authoring (create-hook).",
+      "category": "tooling",
+      "keywords": ["skills", "authoring", "house-style"],
+      "license": "MIT"
+    },
+    {
+      "name": "mobbin-mcp",
+      "source": "./plugins/mobbin-mcp",
+      "description": "Mobbin's official MCP server (OAuth, paid plans): search real app screens, flows, and UI patterns for design reference.",
+      "category": "frontend",
+      "keywords": ["mobbin", "design", "mcp", "inspiration"],
+      "homepage": "https://mobbin.com/mcp"
+    },
+    {
+      "name": "drizzle-best-practices",
+      "source": {
+        "source": "github",
+        "repo": "honra-io/drizzle-best-practices"
+      },
+      "description": "Community Drizzle ORM best practices (PostgreSQL-focused). Early-stage; no official Drizzle skill exists yet.",
+      "category": "database",
+      "keywords": ["drizzle", "orm", "postgres"],
+      "repository": "https://github.com/honra-io/drizzle-best-practices",
+      "license": "MIT"
     }
   ]
 }

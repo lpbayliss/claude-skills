@@ -1,0 +1,13 @@
+{
+  "name": "lpbayliss",
+  "version": "1.1.0",
+  "description": "Luke's own skills: house-style skill authoring (create-skill) and Claude Code hook authoring (create-hook).",
+  "author": {
+    "name": "Luke Bayliss",
+    "url": "https://github.com/lpbayliss"
+  },
+  "homepage": "https://github.com/lpbayliss/claude-skills",
+  "repository": "https://github.com/lpbayliss/claude-skills",
+  "license": "MIT",
+  "keywords": ["skills", "authoring", "house-style"]
+}

@@ -1,0 +1,34 @@
+{
+  "skill_name": "create-skill",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "authoring",
+      "prompt": "Draft a new Claude skill for this collection that helps write good Dockerfiles. Produce the SKILL.md frontmatter, directory layout, and body outline.",
+      "expected_output": "A narrowly scoped, verb-named single-skill plugin in house style that defers craft methodology to skill-creator.",
+      "assertions": [
+        "Skill name is verb-first (e.g. write-dockerfile), not a noun phrase",
+        "Description follows 'Use when … Do not use for …' in at most two sentences with no content summary",
+        "Scope excludes adjacent jobs (compose, CI) rather than absorbing them",
+        "Body outline uses XML-tagged sections and centers on one worked example rather than rule lists",
+        "Layout bundles references/ for progressive loading and evals/ with both eval files",
+        "Frontmatter carries license MIT and metadata with author lpbayliss and a semver version",
+        "Invokes or defers to the skill-creator skill for authoring methodology"
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "kind": "review",
+      "prompt": "Review this skill draft against our conventions: name 'database-best-practices', description listing everything it covers across schema design, query tuning, and backups, body written as twelve rule sections.",
+      "expected_output": "A review that flags the noun-pile name, verbose summarizing trigger, multi-job scope, and rules-over-examples body, with concrete fixes.",
+      "assertions": [
+        "Flags the noun-based name and proposes a verb-first alternative",
+        "Flags the description for summarizing coverage instead of stating triggers",
+        "Recommends splitting into single-job skills",
+        "Recommends replacing rule sections with a worked example plus on-demand references"
+      ],
+      "files": []
+    }
+  ]
+}

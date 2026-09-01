@@ -1,0 +1,11 @@
+[
+  { "query": "Create a new skill that helps write good Dockerfiles for this collection", "should_trigger": true },
+  { "query": "Draft the SKILL.md for a postgres migration review skill", "should_trigger": true },
+  { "query": "The trigger description on my metrics skill fires on unrelated analytics questions — tighten it", "should_trigger": true },
+  { "query": "Review whether my presentation-planning skill follows our conventions", "should_trigger": true },
+  { "query": "Add trigger evals to the specify skill", "should_trigger": true },
+  { "query": "Install the skill-creator plugin from the marketplace", "should_trigger": false },
+  { "query": "Use the write-dockerfile skill to containerize this Express app", "should_trigger": false },
+  { "query": "Which skills are in my marketplace right now?", "should_trigger": false },
+  { "query": "Write a Dockerfile for this repo", "should_trigger": false }
+]
