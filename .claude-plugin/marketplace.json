@@ -4,26 +4,6 @@
     "name": "Luke Bayliss",
     "url": "https://github.com/lpbayliss"
   },
-  "description": "Claude skills maintained by Luke Bayliss.",
-  "plugins": [
-    {
-      "name": "lpbayliss",
-      "source": "./",
-      "description": "Reusable software engineering skills for specification, trustworthy metrics, and presentation planning.",
-      "homepage": "https://github.com/lpbayliss/claude-skills",
-      "repository": "https://github.com/lpbayliss/claude-skills",
-      "license": "MIT",
-      "category": "development",
-      "tags": [
-        "skills",
-        "specification",
-        "metrics",
-        "observability",
-        "presentations",
-        "storytelling",
-        "technical-communication",
-        "planning"
-      ]
-    }
-  ]
+  "description": "A curated marketplace of Claude Code skills and plugins for tools Luke uses regularly, referencing upstream maintainers where possible.",
+  "plugins": []
 }
