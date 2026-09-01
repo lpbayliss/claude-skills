@@ -6,13 +6,18 @@ Where a well-regarded upstream maintainer publishes a skill or plugin, this mark
 
 ## Install
 
-```text
-/plugin marketplace add lpbayliss/claude-skills
+The guided way — clone this repo and run the installer (needs Node and the Claude Code CLI):
+
+```sh
+node install.mjs
 ```
 
-Then install individual plugins:
+It adds the marketplace (from GitHub or the local checkout), shows what's already installed, and lets you pick plugins (`all`, `missing`, or numbers) and a scope. It also accepts piped answers for scripted setup.
+
+The manual way, from inside Claude Code:
 
 ```text
+/plugin marketplace add lpbayliss/claude-skills
 /plugin install react-best-practices@lpbayliss-skills
 ```
 
