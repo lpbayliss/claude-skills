@@ -1,5 +1,6 @@
 {
   "name": "mobbin-mcp",
+  "version": "1.0.0",
   "description": "Connects Mobbin's official MCP server for searching real app screens, flows, and UI patterns as design references.",
   "author": {
     "name": "Luke Bayliss",
