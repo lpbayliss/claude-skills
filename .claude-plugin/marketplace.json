@@ -164,6 +164,14 @@
       "license": "MIT"
     },
     {
+      "name": "notify",
+      "source": "./plugins/notify",
+      "description": "Desktop notifications when Claude finishes responding or needs input, titled with the session's project and id.",
+      "category": "tooling",
+      "keywords": ["hooks", "notifications", "desktop"],
+      "license": "MIT"
+    },
+    {
       "name": "mobbin-mcp",
       "source": "./plugins/mobbin-mcp",
       "description": "Mobbin's official MCP server (OAuth, paid plans): search real app screens, flows, and UI patterns for design reference.",

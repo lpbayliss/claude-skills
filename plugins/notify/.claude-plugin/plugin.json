@@ -1,0 +1,13 @@
+{
+  "name": "notify",
+  "version": "1.0.0",
+  "description": "Desktop notifications when Claude finishes a task or needs input, with session context. Cross-platform (macOS, Linux, Windows).",
+  "author": {
+    "name": "Luke Bayliss",
+    "url": "https://github.com/lpbayliss"
+  },
+  "homepage": "https://github.com/lpbayliss/claude-skills",
+  "repository": "https://github.com/lpbayliss/claude-skills",
+  "license": "MIT",
+  "keywords": ["hooks", "notifications", "desktop"]
+}
