@@ -54,27 +54,20 @@ Every skill ships `evals/` with both files. Fixtures go in `evals/files/` when a
 }
 ```
 
-## Marketplace registration
+## Registration
 
-Local skills live under `plugins/<name>/` as single-skill plugins and get an entry in `.claude-plugin/marketplace.json`:
+Own skills all live inside the single base plugin `plugins/lpbayliss/` — do NOT create a new plugin or marketplace entry per skill. To register a new skill:
 
-```json
-{
-  "name": "write-dockerfile",
-  "source": "./plugins/write-dockerfile",
-  "description": "…same discipline as the trigger description…",
-  "category": "devops",
-  "keywords": ["docker", "dockerfile"]
-}
-```
-
-Plus a row in the README's curated table. Run `claude plugin validate .` before committing.
+1. Add its directory under `plugins/lpbayliss/skills/<verb-name>/`.
+2. Bump the `version` in `plugins/lpbayliss/.claude-plugin/plugin.json` and mention the skill in its `description`.
+3. Add a row to the README's curated table.
+4. Run `claude plugin validate .` before committing.
 
 ## Complete skeleton
 
 ```
-plugins/<verb-name>/
-  .claude-plugin/plugin.json      # name, semver version, author, license MIT
+plugins/lpbayliss/
+  .claude-plugin/plugin.json      # base plugin: semver version, author, license MIT
   skills/<verb-name>/
     SKILL.md                      # <500 words; XML-tagged sections; one worked example
     references/<topic>.md         # depth, loaded on demand

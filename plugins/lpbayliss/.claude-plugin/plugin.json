@@ -1,7 +1,7 @@
 {
-  "name": "create-skill",
+  "name": "lpbayliss",
   "version": "1.0.0",
-  "description": "Authors Claude skills in the lpbayliss house style, delegating core craft to Anthropic's skill-creator.",
+  "description": "Luke's own skills: skill authoring in house style, with more to come.",
   "author": {
     "name": "Luke Bayliss",
     "url": "https://github.com/lpbayliss"
@@ -9,5 +9,5 @@
   "homepage": "https://github.com/lpbayliss/claude-skills",
   "repository": "https://github.com/lpbayliss/claude-skills",
   "license": "MIT",
-  "keywords": ["skills", "authoring", "meta", "house-style"]
+  "keywords": ["skills", "authoring", "house-style"]
 }

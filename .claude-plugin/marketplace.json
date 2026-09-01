@@ -156,11 +156,11 @@
       "license": "Apache-2.0"
     },
     {
-      "name": "create-skill",
-      "source": "./plugins/create-skill",
-      "description": "Authors skills in the lpbayliss house style, delegating core craft to Anthropic's skill-creator.",
+      "name": "lpbayliss",
+      "source": "./plugins/lpbayliss",
+      "description": "Luke's own skills, starting with create-skill for house-style skill authoring.",
       "category": "tooling",
-      "keywords": ["skills", "authoring", "house-style", "meta"],
+      "keywords": ["skills", "authoring", "house-style"],
       "license": "MIT"
     },
     {

@@ -15,7 +15,7 @@ Anthropic's `skill-creator` skill owns the authoring craft. This skill owns the 
 1. Invoke the `skill-creator` skill and follow its process for scoping, drafting, and packaging. If it is not installed, install it first: `/plugin install skill-creator@lpbayliss-skills`.
 2. Shape everything it produces with <house-style>.
 3. Add evals before calling the skill done — formats in `references/house-style.md`.
-4. Register the skill in `.claude-plugin/marketplace.json` and the README table.
+4. Register the skill: it lives inside the base plugin `plugins/lpbayliss/skills/<name>/` — bump that plugin's version and add a README table row. No new plugin, no new marketplace entry.
 </workflow>
 
 <house-style>
@@ -44,7 +44,7 @@ metadata:
 ```
 
 ```
-skills/write-dockerfile/
+plugins/lpbayliss/skills/write-dockerfile/
   SKILL.md                    # <workflow>, <example> (one full annotated Dockerfile), <references>
   references/hardening.md     # loaded only when security comes up
   references/multi-stage.md   # loaded only for size/build-speed work
